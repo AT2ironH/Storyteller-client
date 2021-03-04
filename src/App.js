@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import CreateStory from './components/CreateStory';
 import { Switch, Route, withRouter } from "react-router-dom";
 import Homepage from "./components/Homepage";
 import Login from "./components/Login"
@@ -71,6 +73,8 @@ class App extends Component {
     return (
       <div>
       <NavTop />
+      <CreateStory />
+      
         <Switch>
           <Route exact path="/Homepage" component={Homepage} />
           <Route
