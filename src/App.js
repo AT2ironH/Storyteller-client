@@ -1,15 +1,21 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
+import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import CreateStory from './components/CreateStory';
 
-function App() {
-  return (
-    <div className="App">
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-      </Switch>
-    </div>
-  );
+
+
+class App extends Component {
+
+  render() {
+    return (
+      <div>
+      <CreateStory />
+      
+        
+      </div>
+    )
+  }
 }
+
 
 export default App;
