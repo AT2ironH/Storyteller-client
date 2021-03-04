@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
+import { Link } from "react-router-dom";
+
 
  class NavTop extends Component {
     render() {
         return (
-            <div>
-                
-            </div>
-        )
+          <div>
+            <Link to="/allstories">Logo</Link>
+          </div>
+        );
     }
 }
 export default NavTop;

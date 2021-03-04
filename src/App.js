@@ -5,6 +5,7 @@ import Login from "./components/Login"
 import Signup from "./components/SignUp";
 import axios from "axios"
 import config from "./config";
+import NavTop from "./components/NavTop";
 
 
 
@@ -69,6 +70,7 @@ class App extends Component {
   render() {
     return (
       <div>
+      <NavTop />
         <Switch>
           <Route exact path="/Homepage" component={Homepage} />
           <Route
