@@ -7,7 +7,7 @@ import React, { Component } from 'react'
             <form onSubmit={this.props.onAdd}>
               <input name="email" type="email" placeholder="Enter email" />
               <input name="password" type="password" placeholder="Enter password" />
-              <button type="submit">Signup</button>
+              <button type="submit">Login</button>
             </form>
           </div>
         );
