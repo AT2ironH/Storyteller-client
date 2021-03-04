@@ -73,7 +73,7 @@ class App extends Component {
     return (
       <div>
       <NavTop />
-      {/* <CreateStory /> */}
+      <CreateStory />
       
         <Switch>
           <Route exact path="/Homepage" component={Homepage} />
