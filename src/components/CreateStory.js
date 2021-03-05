@@ -6,91 +6,90 @@ import config from '../config'
 
 
  class CreateStory extends Component {
+   state = {
+     story: {},
+     inputLocation: "Taganga",
+     lat: 11.267489,
+     lon: -74.191023,
+     //    stories: [],
+     //    loggedInUser: null,
+     //    error: null,
+   };
 
-    state = {
-        story: {}
-    //    stories: [],
-    //    loggedInUser: null,
-    //    error: null,
+   handleChange = (event) => {
+       this.setState({
+         inputLocation: event.target.value,
+       });
+     // make the api call here
+     axios.get(`${config.GEO_URL}${event.target.value}`)
+     .then((response) => {
+        console.log(response.data.data[0])
+        let aresponse = response.data.data[0];
+        this.setState({
+          lat: aresponse.latitude,
+          lon: aresponse.longitude,
+        });
+     })
+     .catch((err)=> {
+        console.log("sth went wrong")
+     })
+     // once api is successful
+     
+   };
 
-    }
+   render() {
+     return (
+       // <Snuggle>
+       <div className="card-story">
+         <Map lon={this.state.lon} lat={this.state.lat} inputLocation={this.state.inputLocation} />
 
-    // handleSubmit =(event) => {
-    //     event.preventDefault() 
-    //         let location = event.target.location.value
-    //         let image = event.target.image.files[0]
-    //         let title = event.target.title.value
-    //         let description = event.target.description.value
-    //         // let public = event.target.public.value
-            
-        
+         <form onSubmit={this.props.onAdd}>
+           <input
+             onChange={this.handleChange}
+             name="location"
+             value={this.state.inputLocation}
+             type="text"
+             placeholder="Tell where it is.."
+           />
+           <br />
+           <input name="image" type="file" cols="35" />
+           <br />
+           <input
+             name="title"
+             type="text"
+             placeholder="Tell the title of your story.."
+           />
+           <br />
+           <textarea
+             id="tellStory"
+             name="description"
+             placeholder="Tell your story...."
+             rows="8"
+             cols="35"
+           ></textarea>
+           <br />
 
-    //     let uploadForm = new FormData()
-    //     uploadForm.append('imageUrl', image)
+           <input
+             name="btn-public"
+             type="checkbox"
+             className="btn-hide-show"
+             data-type="simple-switch"
+           />
 
-    //     // send image to cloudinary
-    //     axios.post(`${config.API_Url}/api/upload`, uploadForm)
-            
-    //     .then((response) => {
-    //         // make an API call to the server side route to create a new story
-    //         axios.post(`${config.API_URL}/api/create`, {
+           <button name="btn-submit" type="submit">
+             pin
+           </button>
+         </form>
+       </div>
 
-    //             location: location,
-    //             image: response.data.image,
-    //             title: title,
-    //             description: description,
-    //             // public: public,
-    //             completed: false
+       //  </Snuggle>
 
-    //         })
-
-    //     .then((response) => {
-    //         // when the server has created a story
-    //         // update the state that is visible to the user
-    //         this.setState({
-    //             stories: [response.data, ...this.state.stories]
-    //         }, () => {
-    //         // when story is created lead user to his page
-    //             this.props.history.push('/api/user/:userId')
-    //         })
-    //     })
-    //     .catch((error) => {
-    //         console.log("Creating story failed", error)
-    //     })        
-
-    //     })
-
-    // }
-
-    render() {
-        return (
-
-                <Snuggle>
-                    <div className="card-story">
-                        <Map />
-
-                            <form onSubmit={this.props.onAdd}>
-                                <input name="location" type="text" placeholder="Tell where it is.." /><br/>
-                                <input name="image" type="file" cols="35"/><br/>
-                                <input name="title" type="text" placeholder="Tell the title of your story.." /><br/>
-                                <textarea id="tellStory" name="description" placeholder="Tell your story...." rows="8" cols="35"></textarea><br/>
-
-                                <input name="btn-public" type="checkbox" className="btn-hide-show" data-type="simple-switch" />
-
-                                <button name="btn-submit" type="submit">pin</button>
-                            </form>
-
-                    </div>
-                   
-                 </Snuggle>
-
-        //  {/* <Route path="/create" render={() => {
-        //         return <CreateStory onAdd={this.handleSubmit} />
-        //     }} /> */}
-                     
-        )
-    }
-}
+       //  {/* <Route path="/create" render={() => {
+       //         return <CreateStory onAdd={this.handleSubmit} />
+       //     }} /> */}
+     );
+   }
+ }
 
 export default CreateStory;
 
