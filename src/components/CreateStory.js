@@ -8,9 +8,10 @@ import config from '../config'
  class CreateStory extends Component {
 
     state = {
-       stories: [],
-       loggedInUser: null,
-       error: null,
+        story: {}
+    //    stories: [],
+    //    loggedInUser: null,
+    //    error: null,
 
     }
 
@@ -68,7 +69,7 @@ import config from '../config'
                     <div className="card-story">
                         <Map />
 
-                            <form onSubmit={this.props.onCreate}>
+                            <form onSubmit={this.props.onAdd}>
                                 <input name="location" type="text" placeholder="Tell where it is.." /><br/>
                                 <input name="image" type="file" cols="35"/><br/>
                                 <input name="title" type="text" placeholder="Tell the title of your story.." /><br/>
@@ -81,11 +82,12 @@ import config from '../config'
 
                     </div>
                    
-                </Snuggle>
+                 </Snuggle>
 
-            
-
-                    
+        //  {/* <Route path="/create" render={() => {
+        //         return <CreateStory onAdd={this.handleSubmit} />
+        //     }} /> */}
+                     
         )
     }
 }
