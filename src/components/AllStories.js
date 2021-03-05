@@ -15,9 +15,6 @@ import React, { Component } from 'react'
             
             </div>
 
-            
-        
-          
 
             }
             </Snuggle> 
