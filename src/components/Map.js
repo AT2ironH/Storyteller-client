@@ -35,9 +35,8 @@ class Map extends Component {
 
   render() {
     let myIcon = new L.Icon({
-      iconUrl:
-        "https://i.pinimg.com/originals/3f/00/09/3f00092889e65095c21223c7fa3eb7e8.jpg",
-      iconSize: [53, 53],
+      iconUrl: "mapPin.png",
+      iconSize: [33, 43],
     });
     const { position } = this.state;
     // props has lat & log
@@ -60,7 +59,7 @@ class Map extends Component {
 
           <Marker icon={myIcon} position={position}>
             <Popup>
-              this is a cool popup <br /> Easily customizable.
+              this is a cool popup <br /> Easily customizable. //we can put a name of the user who made this popup and the location of the popup
             </Popup>
           </Marker>
         </MapContainer>
