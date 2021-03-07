@@ -37,7 +37,7 @@ class Map extends Component {
     return (
       <div id={"asd" + position[0]}>
         <MapContainer
-          style={{ width: "350px", height: "250px" }}
+          style={{ width: "340px", height: "250px" }}
           center={position}
           zoom={13}
           scrollWheelZoom={false}
