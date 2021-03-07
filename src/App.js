@@ -11,6 +11,9 @@ import NavTop from "./components/NavTop";
 import UserProfile from "./components/UserProfile"
 // import LogOut from "./components/LogOut"
 import NavBottom from "./components/NavBottom"
+import AllStories from "./components/AllStories";
+import SingleStory from "./components/SingleStory";
+// import CreateReview from "./components/CreateReview";
 
 
 
@@ -19,6 +22,8 @@ class App extends Component {
     users: [],
     stories: [],
     // isLoggedIn: null,
+    // ready: false,
+    // review: {}
   };
 
   //Signup
@@ -86,15 +91,17 @@ class App extends Component {
 
   // create story
   handleSubmit = (event) => {
-    event.preventDefault();
-    let location = event.target.location.value;
-    let image = event.target.image.files[0];
-    let title = event.target.title.value;
-    let description = event.target.description.value;
-    // let public = event.target.public.value
+    event.preventDefault() 
+        let location = event.target.location.value
+        let image = event.target.image.files[0]
+        let title = event.target.title.value
+        let description = event.target.description.value
+        // let public = event.target.public.value
+        
+    
 
-    let uploadForm = new FormData();
-    uploadForm.append("imageUrl", image);
+    let uploadForm = new FormData()
+    uploadForm.append('imageUrl', image)
 
     // send image to cloudinary
     axios
@@ -151,8 +158,60 @@ class App extends Component {
   //       );
   //     });
   // };
+  //}
+
+  // get all stories
+  componentDidMount() {
+
+    axios.get(`${config.API_URL}/api/allstories`)
+      
+        .then((response) => {
+        console.log(response.data)
+            this.setState({ stories: response.data });
+        })
+
+        .catch(() => {
+            console.log("Fetching all stories failed");
+        });
+    }
+
+
+  // create review
+//   handleSubmitReview = (event) => {
+//     event.preventDefault() 
+//     let review = event.target.review.value;
+
+//     // make an API call to the server side Route to create a review
+//     axios.post(`${config.API_URL}/api/placeReview`, {
+//       review: review,
+//       completed: false
+  
+//   }, {withCredentials: true})
+
+//   .then((response) => {
+//     // when server has created this new review, update your state that is visible to the user
+//     this.setState({
+//       reviews: [response.data, ...this.state.reviews],
+//       completed: false,
+//     }, () => {
+//       // after updating state, go to update stories page
+//       this.props.history.push("/allstories")
+//     })
+
+//   })
+//   .catch((err) => {
+//     console.log('Failed create review', err)
+//   })
+  
+//   .catch(() => {
+
+//   })  
+// }
 
   render() {
+    const {stories} = this.state
+    const {review} = this.state
+
     return (
       <div>
         <NavTop />
@@ -182,6 +241,24 @@ class App extends Component {
           <Route path="/userprofile" component={UserProfile} />
 
           {/* <LogOut onLogout={this.handleLogout} user={isLoggedIn} /> */}
+          <Route exact path="/allstories" render={() => {
+              return <AllStories stories={stories} />
+          }} />
+        
+          <Route exact path="/allstories/:storyId" render={(routeProps) => {
+              return <SingleStory {...routeProps} />
+          }} />
+          
+          <Route path="/create" render={() => {
+                return <CreateStory onAdd={this.handleSubmit} />
+            }} /> 
+
+          <Route path='/placeReview' render={(routeProps) => {
+            return <CreateReview onAdd={this.handleSubmitReview} />
+          }} />
+          
+
+  
         </Switch>
         <NavBottom />
       </div>

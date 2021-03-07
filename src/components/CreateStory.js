@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Snuggle from 'react-snuggle';
 import Map from './Map';
 import axios from 'axios';
-import config from '../config'
+import config from '../config';
 
 
  class CreateStory extends Component {
@@ -11,9 +12,7 @@ import config from '../config'
      inputLocation: "Taganga",
      lat: 11.267489,
      lon: -74.191023,
-     //    stories: [],
-     //    loggedInUser: null,
-     //    error: null,
+     
    };
 
    handleChange = (event) => {
@@ -40,53 +39,49 @@ import config from '../config'
    render() {
      return (
        // <Snuggle>
-       <div className="card-story">
-         <Map lon={this.state.lon} lat={this.state.lat} inputLocation={this.state.inputLocation} />
+            <div className="container">
+                <div className="row">
+                <div className="col-sm-3">
 
-         <form onSubmit={this.props.onAdd}>
-           <input
-             onChange={this.handleChange}
-             name="location"
-             value={this.state.inputLocation}
-             type="text"
-             placeholder="Tell where it is.."
-           />
-           <br />
-           <input name="image" type="file" cols="35" />
-           <br />
-           <input
-             name="title"
-             type="text"
-             placeholder="Tell the title of your story.."
-           />
-           <br />
-           <textarea
-             id="tellStory"
-             name="description"
-             placeholder="Tell your story...."
-             rows="8"
-             cols="35"
-           ></textarea>
-           <br />
+        
+                    <Map lon={this.state.lon} lat={this.state.lat} inputLocation={this.state.inputLocation} /><br/>
+                  
+                    <form onSubmit={this.props.onAdd}>
+                  
 
-           <input
-             name="btn-public"
-             type="checkbox"
-             className="btn-hide-show"
-             data-type="simple-switch"
-           />
+                        <div className="form-group">
+                          <input className="form-control" onChange={this.handleChange} name="location" value={this.state.inputLocation} type="text" placeholder="Tell where it is.." /> 
+                        </div>
 
-           <button name="btn-submit" type="submit">
-             pin
-           </button>
-         </form>
-       </div>
+                        <div class="custom-file">
+                          <input name="image" type="file" className="custom-file-input" />
+                          <label class="custom-file-label" for="customFile">choose image</label>
+                        </div>
+
+                        <div className="form-group">
+                          <input className="form-control" name="title" type="text" placeholder="Tell the title of your story.." />
+                        </div>
+
+                        <div className="form-group">
+                          <textarea className="form-control" id="tellStory" name="description" rows="6" placeholder="Tell your story...." ></textarea>
+                        </div>
+
+                        <div className="form-group">
+                          <input name="btn-public" type="checkbox" className="btn-hide-show" data-type="simple-switch" />
+                          <label className="hide-show-label">private</label>
+                        </div>
+
+                        <div className="form-group">
+                          <button name="btn-submit" type="submit" className="btn btn-outline-dark">pin</button>
+                        </div>
+              
+              </form>
+              </div>
+              </div>
+            </div>
 
        //  </Snuggle>
 
-       //  {/* <Route path="/create" render={() => {
-       //         return <CreateStory onAdd={this.handleSubmit} />
-       //     }} /> */}
      );
    }
  }
