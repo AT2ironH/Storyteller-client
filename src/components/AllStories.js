@@ -24,7 +24,7 @@ class AllStories extends Component {
             <div className="container"> 
                  <div className="row">
                     <div className="col-sm-3">
-                        {/* <Map /> */}
+                        <Map />
                         
                         <h1>all stories here</h1>
                         {
@@ -69,53 +69,7 @@ class AllStories extends Component {
     
 export default AllStories;
 
-// import React, { Component } from 'react';
-// import Snuggle from 'react-snuggle';
-// import Map from './Map';
-// import axios from 'axios';
-// import config from '../config';
-// import { Link } from 'react-router-dom';
-// import AllStories from './AllStories.css';
 
-// class AllStories extends Component {
-
-//     // this.props = {
-//     //     stories: []
-//     // }
-
-//     render() {
-//         const {stories} = this.props
-            
-//         return (
-//           <div>
-            
-//                         {/* <Map /> */}
-                        
-//                         <h1>all stories here</h1>
-//                         {
-//                         stories.map((story) => {
-//                             return <Link to={`/allstories/${story._id}`}>
-//                             <div className="card-columns">
-//                                 <div className="card">
-//                                     <div key={story._id}></div>
-//                                     <img className="card-img-top" src={story.image} alt="Card image cap" style={{ width: "140px"}} />
-//                                     <h5 class="card-title">{story.title}</h5>
-//                                     <p class="card-text">{story.description}</p>
-//                                </div>
-//                               </div>
-//                             </Link>  
-                          
-//                         })
-//                         }  
-            
-//           </div>         
-//         )   
-    
-//     }
-// }
-    
-    
-// export default AllStories;
 
 
 

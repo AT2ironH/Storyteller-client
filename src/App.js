@@ -18,8 +18,8 @@ class App extends Component {
   state = {
     users: [],
     stories: [],
-    ready: false,
-    review: {}
+    // ready: false,
+    // review: {}
   };
 
   //Signup
@@ -143,38 +143,38 @@ class App extends Component {
 
 
   // create review
-  handleSubmitReview = (event) => {
-    event.preventDefault() 
-    let review = event.target.review.value;
+//   handleSubmitReview = (event) => {
+//     event.preventDefault() 
+//     let review = event.target.review.value;
 
-    // make an API call to the server side Route to create a review
-    axios.post(`${config.API_URL}/api/placeReview`, {
-      review: review,
-      completed: false
+//     // make an API call to the server side Route to create a review
+//     axios.post(`${config.API_URL}/api/placeReview`, {
+//       review: review,
+//       completed: false
   
-  }, {withCredentials: true})
+//   }, {withCredentials: true})
 
-  .then((response) => {
-    // when server has created this new review, update your state that is visible to the user
-    this.setState({
-      reviews: [response.data, ...this.state.reviews],
-      completed: false,
-    }, () => {
-      // after updating state, go to update stories page
-      this.props.history.push("/allstories")
-    })
+//   .then((response) => {
+//     // when server has created this new review, update your state that is visible to the user
+//     this.setState({
+//       reviews: [response.data, ...this.state.reviews],
+//       completed: false,
+//     }, () => {
+//       // after updating state, go to update stories page
+//       this.props.history.push("/allstories")
+//     })
 
-  })
-  .catch((err) => {
-    console.log('Failed create review', err)
-  })
+//   })
+//   .catch((err) => {
+//     console.log('Failed create review', err)
+//   })
   
-  .catch(() => {
+//   .catch(() => {
 
-  })
+//   })
   
 
-}
+// }
 
   render() {
     const {stories} = this.state
