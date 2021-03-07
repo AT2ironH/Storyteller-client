@@ -7,7 +7,12 @@ import {
   Popup,
   useMap,
 } from "react-leaflet";
+import L from "leaflet"
 import "leaflet/dist/leaflet.css";
+
+  //I DO NOT HAVE DIST FOLDER WITH IMAGES? WHY?
+
+
 
 function MyComponent(props) {
   const map = useMap();
@@ -29,6 +34,10 @@ class Map extends Component {
   }
 
   render() {
+    let myIcon = new L.Icon({
+      iconUrl: "mapPin.png",
+      iconSize: [33, 43],
+    });
     const { position } = this.state;
     // props has lat & log
 
@@ -48,9 +57,9 @@ class Map extends Component {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
 
-          <Marker position={position}>
+          <Marker icon={myIcon} position={position}>
             <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
+              this is a cool popup <br /> Easily customizable. //we can put a name of the user who made this popup and the location of the popup
             </Popup>
           </Marker>
         </MapContainer>
