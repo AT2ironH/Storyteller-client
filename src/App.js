@@ -8,13 +8,17 @@ import Signup from "./components/SignUp";
 import axios from "axios"
 import config from "./config";
 import NavTop from "./components/NavTop";
+import UserProfile from "./components/UserProfile"
+// import LogOut from "./components/LogOut"
+import NavBottom from "./components/NavBottom"
 
 
 
 class App extends Component {
   state = {
     users: [],
-    stories: []
+    stories: [],
+    // isLoggedIn: null,
   };
 
   //Signup
@@ -25,11 +29,15 @@ class App extends Component {
     let password = event.target.password.value;
 
     axios
-      .post(`${config.API_URL}/api/signup`, {
-        name: name,
-        email: email,
-        password: password,
-      }, {withCredentials: true})
+      .post(
+        `${config.API_URL}/api/signup`,
+        {
+          name: name,
+          email: email,
+          password: password,
+        },
+        { withCredentials: true }
+      )
       .then((response) => {
         this.setState(
           {
@@ -52,12 +60,15 @@ class App extends Component {
     let password = event.target.password.value;
 
     axios
-      .post(`${config.API_URL}/api/signin`, {
-        //which api url goes here? config is not defined?
-        email: email,
-        password: password,
-      
-      }, {withCredentials: true})
+      .post(
+        `${config.API_URL}/api/signin`,
+        {
+          //which api url goes here? config is not defined?
+          email: email,
+          password: password,
+        },
+        { withCredentials: true }
+      )
       .then((response) => {
         this.setState(
           {
@@ -74,58 +85,78 @@ class App extends Component {
   };
 
   // create story
-  handleSubmit =(event) => {
-    event.preventDefault() 
-        let location = event.target.location.value
-        let image = event.target.image.files[0]
-        let title = event.target.title.value
-        let description = event.target.description.value
-        // let public = event.target.public.value
-        
-    
+  handleSubmit = (event) => {
+    event.preventDefault();
+    let location = event.target.location.value;
+    let image = event.target.image.files[0];
+    let title = event.target.title.value;
+    let description = event.target.description.value;
+    // let public = event.target.public.value
 
-    let uploadForm = new FormData()
-    uploadForm.append('imageUrl', image)
+    let uploadForm = new FormData();
+    uploadForm.append("imageUrl", image);
 
     // send image to cloudinary
-    axios.post(`${config.API_URL}/api/upload`, uploadForm, {withCredentials: true})
-        
-    .then((response) => {
+    axios
+      .post(`${config.API_URL}/api/upload`, uploadForm, {
+        withCredentials: true,
+      })
+
+      .then((response) => {
         // make an API call to the server side route to create a new story
-        axios.post(`${config.API_URL}/api/create`, {
+        axios
+          .post(
+            `${config.API_URL}/api/create`,
+            {
+              location: location,
+              image: response.data.image,
+              title: title,
+              description: description,
+              // public: public,
+              completed: false,
+            },
+            { withCredentials: true }
+          )
 
-            location: location,
-            image: response.data.image,
-            title: title,
-            description: description,
-            // public: public,
-            completed: false
+          .then((response) => {
+            // when the server has created a story
+            // update the state that is visible to the user
+            this.setState(
+              {
+                stories: [response.data, ...this.state.stories],
+              },
+              () => {
+                // when story is created lead user to his page
+                this.props.history.push("/api/user/:userId");
+              }
+            );
+          })
+          .catch((error) => {
+            console.log("Creating story failed", error);
+          });
+      });
+  };
 
-        }, {withCredentials: true})
-
-    .then((response) => {
-        // when the server has created a story
-        // update the state that is visible to the user
-        this.setState({
-            stories: [response.data, ...this.state.stories]
-        }, () => {
-        // when story is created lead user to his page
-            this.props.history.push('/api/user/:userId')
-        })
-    })
-    .catch((error) => {
-        console.log("Creating story failed", error)
-    })        
-
-    })
-
-}
+  // handleLogout = () => {
+  //   axios
+  //     .post(`${config.API_URL}/api/logout`, {}, { withCredentials: true })
+  //     .then(() => {
+  //       this.setState(
+  //         {
+  //           isLoggedIn: null,
+  //         },
+  //         () => {
+  //           this.props.history.push("/login");
+  //         }
+  //       );
+  //     });
+  // };
 
   render() {
     return (
       <div>
-      <NavTop />
-      
+        <NavTop />
+
         <Switch>
           <Route exact path="/Homepage" component={Homepage} />
           <Route
@@ -142,14 +173,17 @@ class App extends Component {
               return <Login onAdd={this.handleLogin} />; //would onAdd work???
             }}
           />
+          <Route
+            path="/create"
+            render={() => {
+              return <CreateStory onAdd={this.handleSubmit} />;
+            }}
+          />
+          <Route path="/userprofile" component={UserProfile} />
 
-         <Route path="/create" render={() => {
-                return <CreateStory onAdd={this.handleSubmit} />
-            }} /> 
-
-
-          
+          {/* <LogOut onLogout={this.handleLogout} user={isLoggedIn} /> */}
         </Switch>
+        <NavBottom />
       </div>
     );
   }
