@@ -134,7 +134,7 @@ class App extends Component {
               },
               () => {
                 // when story is created lead user to his page
-                this.props.history.push("/api/user/:userId");
+                this.props.history.push("/api/user:userId");
               }
             );
           })
@@ -238,7 +238,7 @@ class App extends Component {
               return <CreateStory onAdd={this.handleSubmit} />;
             }}
           />
-          <Route path="/userprofile" component={UserProfile} />
+          <Route path="/userprofile" component={UserProfile} />     {/*ajust the profile link to be a dinamic one and it shows a specific logged in user*/}
 
           {/* <LogOut onLogout={this.handleLogout} user={isLoggedIn} /> */}
           <Route exact path="/allstories" render={() => {
@@ -249,9 +249,7 @@ class App extends Component {
               return <SingleStory {...routeProps} />
           }} />
           
-          <Route path="/create" render={() => {
-                return <CreateStory onAdd={this.handleSubmit} />
-            }} /> 
+
 
           <Route path='/placeReview' render={(routeProps) => {
             return <CreateReview onAdd={this.handleSubmitReview} />
