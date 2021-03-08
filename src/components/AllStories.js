@@ -3,7 +3,7 @@ import Snuggle from 'react-snuggle';
 import Map from './Map';
 import axios from 'axios';
 import config from '../config';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import LikeButton from './button_components/LikeButton'
 
 // masonay doesn't work =========================================!!
@@ -17,7 +17,11 @@ class AllStories extends Component {
     // }
 
     render() {
-        const {stories} = this.props
+        const {stories, user} = this.props
+        //user verification
+            if (!user) {
+              return <Redirect to={"/login"} />;
+            }
             
         return (
           <div>

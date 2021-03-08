@@ -9,11 +9,9 @@ import {Link} from "react-router-dom"
               <Link to="/savedstories">Liked stories</Link>
             </button>
             <button>
-              <Link to="/userprofile">profile</Link>
+              <Link to="/user">profile</Link>
             </button>
-            {/* <button>
-              <Link to="/login">logout</Link>
-            </button> */}
+            <button onClick={this.props.handleLogout}>logout</button>
           </div>
         );
     }

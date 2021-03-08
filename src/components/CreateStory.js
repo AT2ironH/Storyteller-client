@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Snuggle from 'react-snuggle';
+// import Snuggle from 'react-snuggle';
 import Map from './Map';
 import axios from 'axios';
 import config from '../config';

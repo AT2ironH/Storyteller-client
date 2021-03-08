@@ -19,7 +19,7 @@ import SingleStory from "./components/SingleStory";
 
 class App extends Component {
   state = {
-    users: [],
+    user: null,
     stories: [],
     // isLoggedIn: null,
     // ready: false,
@@ -46,7 +46,7 @@ class App extends Component {
       .then((response) => {
         this.setState(
           {
-            users: [response.data, ...this.state.users],
+            user: response.data,
           },
           () => {
             this.props.history.push("/login");
@@ -77,7 +77,7 @@ class App extends Component {
       .then((response) => {
         this.setState(
           {
-            users: [response.data, ...this.state.users],
+            user: response.data,
           },
           () => {
             this.props.history.push("/allstories");
@@ -144,21 +144,21 @@ class App extends Component {
       });
   };
 
-  // handleLogout = () => {
-  //   axios
-  //     .post(`${config.API_URL}/api/logout`, {}, { withCredentials: true })
-  //     .then(() => {
-  //       this.setState(
-  //         {
-  //           isLoggedIn: null,
-  //         },
-  //         () => {
-  //           this.props.history.push("/login");
-  //         }
-  //       );
-  //     });
-  // };
-  //}
+  handleLogout = () => {
+    axios
+      .post(`${config.API_URL}/api/logout`, {}, { withCredentials: true })
+      .then(() => {
+        this.setState(
+          {
+            isLoggedIn: null,
+          },
+          () => {
+            this.props.history.push("/login");
+          }
+        );
+      });
+  };
+  
 
   // get all stories
   componentDidMount() {
@@ -209,7 +209,7 @@ class App extends Component {
 // }
 
   render() {
-    const {stories} = this.state
+    const {stories, user} = this.state
     const {review} = this.state
 
     return (
@@ -238,11 +238,14 @@ class App extends Component {
               return <CreateStory onAdd={this.handleSubmit} />;
             }}
           />
-          <Route path="/userprofile" component={UserProfile} />     {/*ajust the profile link to be a dinamic one and it shows a specific logged in user*/}
+          <Route exact path="/user" render={(userProps) => {
+              return <UserProfile {...userProps} />
+          }} />     {/*ajust the profile link to be a dinamic one and it shows a specific logged in user*/}
 
-          {/* <LogOut onLogout={this.handleLogout} user={isLoggedIn} /> */}
+          
+
           <Route exact path="/allstories" render={() => {
-              return <AllStories stories={stories} />
+              return <AllStories stories={stories} user={user}/>
           }} />
         
           <Route exact path="/allstories/:storyId" render={(routeProps) => {
@@ -258,7 +261,7 @@ class App extends Component {
 
   
         </Switch>
-        <NavBottom />
+        <NavBottom handleLogout={this.handleLogout}/>
       </div>
     );
   }

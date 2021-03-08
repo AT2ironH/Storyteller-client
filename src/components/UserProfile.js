@@ -7,7 +7,7 @@ import NavBottom from "./NavTop"
         return (
           <div>
             <Map />
-            
+            this is the profile page
           </div>
         );
     }
