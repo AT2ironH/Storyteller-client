@@ -4,6 +4,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Map from './Map';
 import axios from 'axios';
 import config from '../config';
+import './AllStories.css'
+import '../App.css'
+
 
 
  class CreateStory extends Component {
@@ -12,8 +15,27 @@ import config from '../config';
      inputLocation: "Taganga",
      lat: 11.267489,
      lon: -74.191023,
-     
+    //  public & private ===================
+    //  visibility: true  
    };
+
+    // public & private =================
+  //  handlePrivacy = (event) => {
+  //    this.setState({
+  //     visibility: event.target.value,
+  //    });
+
+
+  //     .then((res) => {
+  //       if()
+        
+
+  //     })
+
+  //     .catch((err) => {
+
+  //     })
+  //  }
 
    handleChange = (event) => {
        this.setState({
@@ -32,7 +54,7 @@ import config from '../config';
      .catch((err)=> {
         console.log("sth went wrong")
      })
-     // once api is successful
+     
      
    };
 
@@ -50,7 +72,7 @@ import config from '../config';
                   
 
                         <div className="form-group">
-                          <input className="form-control" onChange={this.handleChange} name="location" value={this.state.inputLocation} type="text" placeholder="Tell where it is.." /> 
+                          <input className="form-control line" onChange={this.handleChange} name="location" value={this.state.inputLocation} type="text" placeholder="Tell where it is.." /> 
                         </div>
 
                         <div class="custom-file">
@@ -65,6 +87,12 @@ import config from '../config';
                         <div className="form-group">
                           <textarea className="form-control" id="tellStory" name="description" rows="6" placeholder="Tell your story...." ></textarea>
                         </div>
+
+                        {/*  public & private  */}
+                        {/* <div className="form-group">
+                          <input name="btn-public" type="checkbox" className="btn-hide-show" onChange={this.handlePrivacy} value={this.state.visibility} data-type="simple-switch" />
+                          <label className="hide-show-label">private</label>
+                        </div> */}
 
                         <div className="form-group">
                           <input name="btn-public" type="checkbox" className="btn-hide-show" data-type="simple-switch" />

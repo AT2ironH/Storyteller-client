@@ -36,4 +36,4 @@ class CreateReview extends Component {
     }
 }
 
-export default CreateReview;
+

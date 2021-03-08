@@ -27,6 +27,13 @@ import LikeButton from './button_components/LikeButton'
 
       render() {
        const {story} = this.state
+        //user verification
+        // if (!user) {
+        //     return <Redirect to={"/login"} />;
+        //   }
+
+        // add spinner for before componenDidMount kicks
+        // or use a short method ? (that checks if creator exists)
             return (
                 <div className="container"> 
                   <div className="row">
@@ -37,7 +44,7 @@ import LikeButton from './button_components/LikeButton'
                             <h1 className="title">{story.title}</h1>
                             <p className="description">{story.description}</p>
                             {/* how to link with the user name =======================================*/}
-                            <p className="creator">{story.creator}</p>
+                            <p className="creator">{story.creator?.email}</p>
 
                             <div className="nav-container-story">
                                 <div className="nav-story">

@@ -21,6 +21,7 @@ class App extends Component {
   state = {
     user: null,
     stories: [],
+    story: {}
     // isLoggedIn: null,
     // ready: false,
     // review: {}
@@ -242,6 +243,11 @@ class App extends Component {
               return <UserProfile {...userProps} />
           }} />     {/*ajust the profile link to be a dinamic one and it shows a specific logged in user*/}
 
+        <Route exact path="/user/:singleStory" render={(userProps) => {
+              // return <UserProfile {...userProps} />
+              return <UserProfile story={story} user={user} />
+          }} />     {/*ajust the profile link to be a dinamic one and it shows a specific logged in user*/}
+
           
 
           <Route exact path="/allstories" render={() => {
@@ -249,7 +255,7 @@ class App extends Component {
           }} />
         
           <Route exact path="/allstories/:storyId" render={(routeProps) => {
-              return <SingleStory {...routeProps} />
+              return <SingleStory {...routeProps} user={user}/>
           }} />
           
 
