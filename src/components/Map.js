@@ -34,6 +34,7 @@ class Map extends Component {
   }
 
   render() {
+    
     let myIcon = new L.Icon({
       iconUrl: "mapPin.png",
       iconSize: [33, 43],
@@ -45,7 +46,7 @@ class Map extends Component {
     console.log(this.state.position);
     return (
       <div id={"asd" + position[0]}>
-        <MapContainer
+        <MapContainer 
           style={{ width: "340px", height: "250px" }}
           center={position}
           zoom={13}

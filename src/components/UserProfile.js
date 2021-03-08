@@ -1,13 +1,64 @@
 import React, { Component } from 'react'
 import Map from "./Map"
 import NavBottom from "./NavTop"
+import { Link, Redirect } from "react-router-dom";
+import LikeButton from "./button_components/LikeButton";
+
 
  class UserProfile extends Component {
     render() {
+
+        const { stories, user } = this.props;
+        if (!user) {
+          return <Redirect to={"/login"} />;
+        }
         return (
           <div>
+            <div className="nav-container-card">
+              <button className="btn btn-outline-dark">
+                <Link to="/user">edit profile</Link>
+              </button>
+            </div>
             <Map />
-            this is the profile page
+
+            {stories.map((story) => {
+              return (
+                <div>
+                  {/* <Snuggle> */}
+                  {/* link doesn't seem to work when wrapping image only ====================== */}
+                  <Link to={`/allstories/${story._id}`}>
+                    <div key={story._id}></div>
+                    <img
+                      src={story.image}
+                      alt="story image"
+                      style={{ width: "340px" }}
+                    />
+                    <h4 className="title">{story.title}</h4>
+                    <p className="description">{story.description}</p>
+                    {/* how to link with the user name =======================================*/}
+                    <p className="creator">{story.creator.email}</p>
+                  </Link>
+
+                  <div className="nav-container-card">
+                    {/* like should be an image
+                                                like button goes back to 0 after refresh
+                                                how to take the like state to a single story page =================*/}
+                    <LikeButton />
+                  </div>
+
+                  <div className="nav-container-card">
+                    {/* how to connect review with the story ==============================*/}
+                    <Link to={`/placeReview`}>place review</Link>
+                  </div>
+                </div>
+              );
+              {
+                /* </Snuggle> */
+              }
+            })}
+            <button>
+              <Link to="/create">Create your story</Link>
+            </button>
           </div>
         );
     }

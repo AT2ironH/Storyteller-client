@@ -25,10 +25,14 @@ class LikeButton extends Component {
     render() {
         
         return (
-            <button className="like-img-btn" onClick={this.handleClick} >
-            like {this.state.number} 
-            </button>       
-        )
+          <button
+            className="btn btn-outline-dark"
+            className="like-img-btn"
+            onClick={this.handleClick}
+          >
+            like {this.state.number}
+          </button>
+        );
     }
 }
 

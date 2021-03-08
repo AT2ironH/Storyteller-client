@@ -18,7 +18,7 @@ class AllStories extends Component {
 
     render() {
         const {stories, user} = this.props
-        //user verification
+        // user verification
             if (!user) {
               return <Redirect to={"/login"} />;
             }

@@ -13,10 +13,10 @@ import {Link} from "react-router-dom"
               nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
               reprehenderit in voluptate
             </p>
-            <button>
+            <button className="btn btn-outline-dark">
               <Link to="/login">Login</Link>
             </button>
-            <button>
+            <button className="btn btn-outline-dark">
               <Link to="/signup">Sign up</Link>
             </button>
           </div>

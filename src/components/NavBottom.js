@@ -5,27 +5,21 @@ import {Link} from "react-router-dom"
     render() {
         return (
           <div>
-            <button>
-              <Link to="/savedstories">Liked stories</Link>
-            </button>
-            <button>
+            {
+              this.props.user ? (
+              <button className="btn btn-outline-dark" onClick= {this.props.handleLogout} >logout</button>
+            ) : (null)
+            }
+            
+            {
+              this.props.user ? (
+              <button className="btn btn-outline-dark">
               <Link to="/user">profile</Link>
             </button>
-            <button onClick={this.props.handleLogout}>logout</button>
+            ) : (null)
+            }
           </div>
         );
     }
 }
 export default NavBottom;
-
-
-// import React from "react";
-
-// function MyNav(props) {
-//   return (
-//     <div>
-//           {props.user ? (<button onClick={props.onLogout}>Logout</button>) : null}
-           
-//     </div>
-
-// export default NavBottom;

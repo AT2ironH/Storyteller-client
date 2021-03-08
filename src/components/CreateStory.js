@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Map from './Map';
 import axios from 'axios';
 import config from '../config';
+import { Link, Redirect } from "react-router-dom";
+
 
 
  class CreateStory extends Component {
@@ -37,6 +39,9 @@ import config from '../config';
    };
 
    render() {
+     const { stories, user } = this.props;
+        if (!user) {
+          return <Redirect to={"/login"} />;}
      return (
        // <Snuggle>
             <div className="container">

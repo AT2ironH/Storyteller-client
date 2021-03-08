@@ -14,6 +14,7 @@ import NavBottom from "./components/NavBottom"
 import AllStories from "./components/AllStories";
 import SingleStory from "./components/SingleStory";
 // import CreateReview from "./components/CreateReview";
+import EditUser from "./components/EditUser";
 
 
 
@@ -24,7 +25,10 @@ class App extends Component {
     // isLoggedIn: null,
     // ready: false,
     // review: {}
+    fetching:false,
   };
+
+  
 
   //Signup
   handleSignup = (event) => {
@@ -143,14 +147,14 @@ class App extends Component {
           });
       });
   };
-
+  //LOGOUT
   handleLogout = () => {
     axios
       .post(`${config.API_URL}/api/logout`, {}, { withCredentials: true })
       .then(() => {
         this.setState(
           {
-            isLoggedIn: null,
+            user: null,
           },
           () => {
             this.props.history.push("/login");
@@ -160,8 +164,18 @@ class App extends Component {
   };
   
 
-  // get all stories
+  // get all stories  // also for load screen
   componentDidMount() {
+
+    axios.get(`${config.API_URL}/api/user`, {withCredentials:true})
+      .then((res) => {
+        this.setState({user: res.data, fetching:true})
+        
+      })
+      .catch(()=>{
+        console.log("sth wrong")
+        this.setState({ fetching: true });
+      })
 
     axios.get(`${config.API_URL}/api/allstories`)
       
@@ -211,13 +225,22 @@ class App extends Component {
   render() {
     const {stories, user} = this.state
     const {review} = this.state
-
+      if(!this.state.fetching){
+        return <p>Loading...</p>
+      }
     return (
       <div>
         <NavTop />
 
         <Switch>
-          <Route exact path="/Homepage" component={Homepage} />
+          {/* <Route exact path="/Homepage" component={Homepage} /> */}
+          <Route
+            exact
+            path="/Homepage"
+            render={() => {
+              return <Homepage user={user} />;
+            }}
+          />
           <Route
             exact
             path="/signup"
@@ -235,33 +258,48 @@ class App extends Component {
           <Route
             path="/create"
             render={() => {
-              return <CreateStory onAdd={this.handleSubmit} />;
+              return <CreateStory user={user} onAdd={this.handleSubmit} />;
             }}
           />
-          <Route exact path="/user" render={(userProps) => {
-              return <UserProfile {...userProps} />
-          }} />     {/*ajust the profile link to be a dinamic one and it shows a specific logged in user*/}
+          <Route
+            exact
+            path="/user"
+            render={() => {
+              return <UserProfile stories={stories} user={user} />;
+            }}
+          />
 
-          
+          <Route
+            exact
+            path="/allstories"
+            render={() => {
+              return <AllStories stories={stories} user={user} />;
+            }}
+          />
 
-          <Route exact path="/allstories" render={() => {
-              return <AllStories stories={stories} user={user}/>
-          }} />
-        
-          <Route exact path="/allstories/:storyId" render={(routeProps) => {
-              return <SingleStory {...routeProps} />
-          }} />
-          
+          <Route
+            exact
+            path="/allstories/:storyId"
+            render={(routeProps) => {
+              return <SingleStory {...routeProps} />;
+            }}
+          />
 
-
-          <Route path='/placeReview' render={(routeProps) => {
-            return <CreateReview onAdd={this.handleSubmitReview} />
-          }} />
-          
-
-  
+          <Route
+            path="/placeReview"
+            render={(routeProps) => {
+              return <CreateReview onAdd={this.handleSubmitReview} />;
+            }}
+          />
+          <Route
+            exact
+            path="/edit"
+            render={() => {
+              return <EditUser />;
+            }}
+          />
         </Switch>
-        <NavBottom handleLogout={this.handleLogout}/>
+        <NavBottom user={user} handleLogout={this.handleLogout} />
       </div>
     );
   }
