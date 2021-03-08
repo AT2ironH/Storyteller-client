@@ -28,7 +28,7 @@ class AllStories extends Component {
             <div className="container"> 
                  <div className="row">
                     <div className="col-sm-3">
-                        {/* <Map /> */}
+                        <Map /> 
                         
                         <h1>all stories here</h1>
                         {
@@ -42,7 +42,7 @@ class AllStories extends Component {
                                             <h4 className="title">{story.title}</h4>
                                             <p className="description">{story.description}</p>
                                             {/* how to link with the user name =======================================*/}
-                                            <p className="creator">{story.creator}</p>
+                                            <p className="creator">{story.creator.email}</p>
                                         </Link>
 
                                         <div className="nav-container-card">
@@ -72,3 +72,8 @@ class AllStories extends Component {
     
     
 export default AllStories;
+
+
+
+
+
