@@ -4,8 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Map from './Map';
 import axios from 'axios';
 import config from '../config';
-import './AllStories.css'
-import '../App.css'
+import { Link, Redirect } from "react-router-dom";
 
 
 
@@ -59,6 +58,9 @@ import '../App.css'
    };
 
    render() {
+     const { stories, user } = this.props;
+        if (!user) {
+          return <Redirect to={"/login"} />;}
      return (
        // <Snuggle>
             <div className="container">

@@ -25,7 +25,7 @@ class CreateReview extends Component {
                         </div>
 
                         <div className="form-group">
-                            <button name="btn-submit" type="submit" className="btn btn-outline-dark">place</button>
+                            <button className="btn btn-outline-dark" name="btn-submit" type="submit" className="btn btn-outline-dark">place</button>
                         </div>
                     </form>
                 

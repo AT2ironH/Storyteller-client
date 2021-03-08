@@ -8,7 +8,7 @@ class SignUp extends Component {
               <input name="name" type="text" placeholder="Enter name" />
               <input name="email" type="email" placeholder="Enter email" />
               <input name="password" type="password" placeholder="Enter password" />
-              <button type="submit">Signup</button>
+              <button className="btn btn-outline-dark" type="submit">Signup</button>
             </form>
           </div>
         );
