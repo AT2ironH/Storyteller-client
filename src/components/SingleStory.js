@@ -53,7 +53,7 @@ import LikeButton from './button_components/LikeButton'
                                 </div>
                             </div>
 
-                            <Map />
+                            {/* <Map /> */}
                         </Snuggle>
                           
                     </div>

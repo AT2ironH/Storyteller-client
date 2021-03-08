@@ -26,7 +26,7 @@ class Map extends Component {
   };
 
   componentDidUpdate() {
-    if (this.props.lat !== this.state.position[0]) {
+    if (this.props.lat && this.props.lat !== this.state.position[0]) {
       this.setState({
         position: [this.props.lat, this.props.lon],
       });
