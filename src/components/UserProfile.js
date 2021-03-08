@@ -16,7 +16,7 @@ import LikeButton from "./button_components/LikeButton";
           <div>
             <div className="nav-container-card">
               <button className="btn btn-outline-dark">
-                <Link to="/user">edit profile</Link>
+                <Link to="/edit">edit profile</Link>
               </button>
             </div>
             <Map />
