@@ -171,6 +171,8 @@ class App extends Component {
         password: user.password,
       })
       .then((res) => {
+        console.log(res.data)
+        this.getAllStories()
         this.setState(
           {
             user: res.data,
@@ -197,6 +199,10 @@ class App extends Component {
         this.setState({ fetching: true });
       });
 
+    this.getAllStories()
+  }
+
+  getAllStories = () => {
     axios
       .get(`${config.API_URL}/api/allstories`)
 
@@ -209,7 +215,6 @@ class App extends Component {
         console.log("Fetching all stories failed");
       });
   }
-
   // create review
   //   handleSubmitReview = (event) => {
   //     event.preventDefault()

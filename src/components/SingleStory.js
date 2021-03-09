@@ -16,8 +16,9 @@ import LikeButton from './button_components/LikeButton'
     componentDidMount() {
         let storyId = this.props.match.params.storyId
 
-        axios.get(`${config.API_URL}/api/allstories/${storyId}`)
+        axios.get(`${config.API_URL}/api/allstories/${storyId}` ,{withCredentials: true})
         .then((response) => {
+            console.log(response.data)
           this.setState({ story: response.data })
         })
         .catch((error) => {
@@ -26,6 +27,8 @@ import LikeButton from './button_components/LikeButton'
       }
 
       render() {
+
+
        const {story} = this.state
         //user verification
         // if (!user) {
@@ -53,6 +56,12 @@ import LikeButton from './button_components/LikeButton'
                                     how to take the like state to a single story page =================*/}
                                     <LikeButton />
                                 </div>
+
+                                    {
+                                    story.isOwner ? (
+                                    <button className="btn btn-outline-dark">delete</button>
+                                                ) : null
+                                    }
 
                                 <div className="nav-story">
                                     {/* how to connect review with the story ==============================*/}
