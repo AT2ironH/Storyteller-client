@@ -10,8 +10,6 @@ import {
 import L from "leaflet"
 import "leaflet/dist/leaflet.css";
 
-  //I DO NOT HAVE DIST FOLDER WITH IMAGES? WHY?
-
 
 
 function MyComponent(props) {

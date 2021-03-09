@@ -306,7 +306,9 @@ class App extends Component {
             exact
             path="/allstories/:storyId"
             render={(routeProps) => {
-              return <SingleStory {...routeProps} user={user} />;
+              return (
+                <SingleStory {...routeProps} stories={stories} user={user} />
+              );
             }}
           />
           <Route

@@ -11,7 +11,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import AllStories from "./AllStories";
 
-//I DO NOT HAVE DIST FOLDER WITH IMAGES? WHY?
+
 
 function MyComponent(props) {
   const map = useMap();
