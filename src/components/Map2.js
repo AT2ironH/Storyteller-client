@@ -21,16 +21,16 @@ function MyComponent(props) {
 
 class Map2 extends Component {
   state = {
-    position: [11.267489, -74.191023],
+    position: [44.7866, 20.4489],
   };
 
-//   componentDidUpdate() {
-//     if (this.props.lat && this.props.lat !== this.state.position[0]) {
-//       this.setState({
-//         position: [this.props.lat, this.props.lon],
-//       });
-//     }
-//   }
+  //   componentDidUpdate() {
+  //     if (this.props.lat && this.props.lat !== this.state.position[0]) {
+  //       this.setState({
+  //         position: [this.props.lat, this.props.lon],
+  //       });
+  //     }
+  //   }
 
   render() {
     let myIcon = new L.Icon({
@@ -55,20 +55,20 @@ class Map2 extends Component {
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-            {
-                this.props.stories.map((story) => {
-                    return (
-                      <Marker icon={myIcon} position={[story.location.lat,story.location.lon]}>
-                        <Popup>
-                          this is a cool popup <br /> Easily customizable. //we
-                          can put a name of the user who made this popup and the
-                          location of the popup
-                        </Popup>
-                      </Marker>
-                    );
-                })
-            }
-          
+          {this.props.stories.map((story) => {
+            return (
+              <Marker
+                icon={myIcon}
+                position={[story.location.lat, story.location.lon]}
+              >
+                <Popup>
+                  this is a cool popup <br /> Easily customizable. //we can put
+                  a name of the user who made this popup and the location of the
+                  popup
+                </Popup>
+              </Marker>
+            );
+          })}
         </MapContainer>
       </div>
     );
