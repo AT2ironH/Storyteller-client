@@ -23,13 +23,10 @@ class App extends Component {
     user: null,
     stories: [],
     story: {},
-    // isLoggedIn: null,
     // ready: false,
     // review: {}
-    fetching:false,
+    fetching: false,
   };
-
-  
 
   //Signup
   handleSignup = (event) => {
@@ -95,18 +92,18 @@ class App extends Component {
   };
 
   // create story
-  handleSubmit = (event) => {
-    event.preventDefault() 
-        let location = event.target.location.value
-        let image = event.target.image.files[0]
-        let title = event.target.title.value
-        let description = event.target.description.value
-        // let public = event.target.public.value
-        
-    
+  handleSubmit = (event, lon, lat) => {
+    event.preventDefault();
+    let location = {};
+    location.lon = lon;
+    location.lat = lat;
+    let image = event.target.image.files[0];
+    let title = event.target.title.value;
+    let description = event.target.description.value;
+    // let public = event.target.public.value
 
-    let uploadForm = new FormData()
-    uploadForm.append('imageUrl', image)
+    let uploadForm = new FormData();
+    uploadForm.append("imageUrl", image);
 
     // send image to cloudinary
     axios
@@ -139,7 +136,7 @@ class App extends Component {
               },
               () => {
                 // when story is created lead user to his page
-                this.props.history.push("/api/user:userId");
+                this.props.history.push("/user");
               }
             );
           })
@@ -163,72 +160,94 @@ class App extends Component {
         );
       });
   };
-  
+
+
+//EDIT USER
+  handleEdit = (user) => {
+    axios
+      .patch(`${config.API_URL}/api/user/${user._id}`, {
+        name: user.name,
+        email: user.email,
+        password: user.password,
+      })
+      .then((res) => {
+        this.setState(
+          {
+            user: res.data,
+          },
+          () => {
+            this.props.history.push("/user");
+          }
+        );
+      })
+      .catch((err) => {
+        console.log("Edit failed", err);
+      });
+  };
 
   // get all stories  // also for load screen
   componentDidMount() {
-
-    axios.get(`${config.API_URL}/api/user`, {withCredentials:true})
+    axios
+      .get(`${config.API_URL}/api/user`, { withCredentials: true })
       .then((res) => {
-        this.setState({user: res.data, fetching:true})
-        
+        this.setState({ user: res.data, fetching: true });
       })
-      .catch(()=>{
-        console.log("sth wrong")
+      .catch(() => {
+        console.log("sth wrong");
         this.setState({ fetching: true });
+      });
+
+    axios
+      .get(`${config.API_URL}/api/allstories`)
+
+      .then((response) => {
+        console.log(response.data);
+        this.setState({ stories: response.data });
       })
 
-    axios.get(`${config.API_URL}/api/allstories`)
-      
-        .then((response) => {
-        console.log(response.data)
-            this.setState({ stories: response.data });
-        })
-
-        .catch(() => {
-            console.log("Fetching all stories failed");
-        });
-    }
-
+      .catch(() => {
+        console.log("Fetching all stories failed");
+      });
+  }
 
   // create review
-//   handleSubmitReview = (event) => {
-//     event.preventDefault() 
-//     let review = event.target.review.value;
+  //   handleSubmitReview = (event) => {
+  //     event.preventDefault()
+  //     let review = event.target.review.value;
 
-//     // make an API call to the server side Route to create a review
-//     axios.post(`${config.API_URL}/api/placeReview`, {
-//       review: review,
-//       completed: false
-  
-//   }, {withCredentials: true})
+  //     // make an API call to the server side Route to create a review
+  //     axios.post(`${config.API_URL}/api/placeReview`, {
+  //       review: review,
+  //       completed: false
 
-//   .then((response) => {
-//     // when server has created this new review, update your state that is visible to the user
-//     this.setState({
-//       reviews: [response.data, ...this.state.reviews],
-//       completed: false,
-//     }, () => {
-//       // after updating state, go to update stories page
-//       this.props.history.push("/allstories")
-//     })
+  //   }, {withCredentials: true})
 
-//   })
-//   .catch((err) => {
-//     console.log('Failed create review', err)
-//   })
-  
-//   .catch(() => {
+  //   .then((response) => {
+  //     // when server has created this new review, update your state that is visible to the user
+  //     this.setState({
+  //       reviews: [response.data, ...this.state.reviews],
+  //       completed: false,
+  //     }, () => {
+  //       // after updating state, go to update stories page
+  //       this.props.history.push("/allstories")
+  //     })
 
-//   })  
-// }
+  //   })
+  //   .catch((err) => {
+  //     console.log('Failed create review', err)
+  //   })
+
+  //   .catch(() => {
+
+  //   })
+  // }
 
   render() {
-    const {stories, user} = this.state
-    const {review} = this.state
-      if(!this.state.fetching){
-        return <p>Loading...</p>
-      }
+    const { stories, user } = this.state;
+    const { review } = this.state;
+    if (!this.state.fetching) {
+      return <p>Loading...</p>;
+    }
     return (
       <div>
         <NavTop />
@@ -269,19 +288,22 @@ class App extends Component {
               return <UserProfile stories={stories} user={user} />;
             }}
           />
-         
-        <Route exact path="/user/:singleStory" render={(userProps) => {
+          <Route
+            exact
+            path="/user/:singleStory"
+            render={(userProps) => {
               // return <UserProfile {...userProps} />
-              return <UserProfile story={story} user={user} />
-          }} />     {/*adjust the profile link to be a dinamic one and it shows a specific logged in user*/}
-
-        
-        
-          <Route exact path="/allstories/:storyId" render={(routeProps) => {
-              return <SingleStory {...routeProps} user={user}/>
-          }} />
-          
-
+              return <UserProfile story={story} user={user} />;
+            }}
+          />{" "}
+          {/*adjust the profile link to be a dinamic one and it shows a specific logged in user*/}
+          <Route
+            exact
+            path="/allstories/:storyId"
+            render={(routeProps) => {
+              return <SingleStory {...routeProps} user={user} />;
+            }}
+          />
           <Route
             exact
             path="/allstories"
@@ -289,8 +311,6 @@ class App extends Component {
               return <AllStories stories={stories} user={user} />;
             }}
           />
-
-
           <Route
             path="/placeReview"
             render={(routeProps) => {
@@ -300,8 +320,9 @@ class App extends Component {
           <Route
             exact
             path="/edit"
-            render={() => {
-              return <EditUser />;
+            render={(routeProps) => {
+              //not sure about this route...
+              return <EditUser user={user} onEdit={this.handleEdit} {...routeProps} />;
             }}
           />
         </Switch>
