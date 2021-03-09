@@ -70,7 +70,7 @@ import { Link, Redirect } from "react-router-dom";
         
                     <Map lon={this.state.lon} lat={this.state.lat} inputLocation={this.state.inputLocation} /><br/>
                   
-                    <form onSubmit={this.props.onAdd}>
+                    <form onSubmit={ (event) => {this.props.onAdd(event, this.state.lon , this.state.lat)} }>
                   
 
                         <div className="form-group">
