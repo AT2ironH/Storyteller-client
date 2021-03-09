@@ -1,3 +1,60 @@
+/* background color light: #f3f2f3 
+
+
+
+
+*/
+
+
+
 body {
-    background:goldenrod;
+    background: #f3f2f3;
+}
+
+
+.form-control {
+     border-radius: 0px !important;
+     background-color: rgba(0, 0, 0, 0) !important;
+     border-top: rgba(0, 0, 0, 0) !important;
+     border-left:  rgba(0, 0, 0, 0) !important;
+     border-right:  rgba(0, 0, 0, 0) !important;
+     border-bottom: 1px solid #1F2257 !important;
+}
+input.form-control:focus {
+    outline-width: 0;
+}
+
+
+.custom-file-label {
+    border-radius: 0px !important;
+     background-color: rgba(0, 0, 0, 0) !important;
+     border-top: rgba(0, 0, 0, 0) !important;
+     border-left:  rgba(0, 0, 0, 0) !important;
+     border-right:  rgba(0, 0, 0, 0) !important;
+     border-bottom: 1px solid #1F2257 !important;
+     background-color:  rgba(0, 0, 0, 0) !important;
+    
+}
+
+
+.custom-file-label::after {
+    border-radius: 0px !important;
+     background-color: red !important;
+     box-shadow:  rgba(0, 0, 0, 0) !important;
+     background-color:  rgba(0, 0, 0, 0) !important;
+    
+
+}
+
+input {
+    outline:none !important;
+   }
+
+   input:focus, input.form-control:focus {
+
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
 }

@@ -34,6 +34,7 @@ class AllStories extends Component {
                         {
                         stories.map((story) => {
                             return <div>
+                            
                                 {/* <Snuggle> */}
                                         {/* link doesn't seem to work when wrapping image only ====================== */}
                                         <Link to={`/allstories/${story._id}`}>
