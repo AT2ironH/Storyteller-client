@@ -187,6 +187,27 @@ class App extends Component {
       });
   };
 
+  //DELETE
+  handleDelete = (story) => {
+    axios.delete(`${config.API_URL}/api/stories/${story._id}`) 
+      .then((response) => {
+        //we need to acces the state and remove the element from the state and then update the state. and then 195 line of code will be done.
+        this.setState(
+          {
+            //return state.filter(territory => territory.id !== territoryId);
+            // postList: this.state.postList.filter(item => item.post_id != deletePostId)
+            stories: response.data
+          },
+          () => {
+            this.props.history.push("/user");
+          }
+        );
+      })
+      .catch(() => {
+
+      })
+  }
+
   // get all stories  // also for load screen
   componentDidMount() {
     axios
@@ -258,10 +279,10 @@ class App extends Component {
         <NavTop />
 
         <Switch>
-          {/* <Route exact path="/Homepage" component={Homepage} /> */}
+          
           <Route
             exact
-            path="/Homepage"
+            path="/"
             render={() => {
               return <Homepage user={user} />;
             }}
@@ -297,17 +318,15 @@ class App extends Component {
             exact
             path="/user/:singleStory"
             render={(userProps) => {
-              // return <UserProfile {...userProps} />
-              return <UserProfile story={story} user={user} />;
+              return <UserProfile  story={story} user={user} />;
             }}
-          />{" "}
-          {/*adjust the profile link to be a dinamic one and it shows a specific logged in user*/}
+          />
           <Route
             exact
             path="/allstories/:storyId"
             render={(routeProps) => {
               return (
-                <SingleStory {...routeProps} stories={stories} user={user} />
+                <SingleStory handleDelete={this.handleDelete} {...routeProps} stories={stories} user={user} />
               );
             }}
           />
@@ -318,21 +337,14 @@ class App extends Component {
               return <AllStories stories={stories} user={user} />;
             }}
           />
-          <Route
-            path="/placeReview"
-            render={(routeProps) => {
-              return <CreateReview onAdd={this.handleSubmitReview} />;
-            }}
-          />
+
           <Route
             exact
             path="/edit"
             render={(routeProps) => {
               //not sure about this route...
               return (
-                <EditUser
-                  user={user}
-                  onEdit={this.handleEdit}
+                <EditUser user={user} onEdit={this.handleEdit}
                   {...routeProps}
                 />
               );

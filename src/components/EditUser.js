@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import config from "../config";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 class EditUser extends Component {
   state = {
@@ -53,6 +54,10 @@ class EditUser extends Component {
 
   render() {
       const { user } = this.state;
+      //if you are not logedin you will be redirected to login page.
+       if (!user) {
+         return <Redirect to={"/login"} />;
+       }
     return (
       <div>
         

@@ -4,7 +4,8 @@ import Map from './Map';
 import axios from 'axios';
 import config from '../config';
 import { Link } from 'react-router-dom';
-import LikeButton from './button_components/LikeButton'
+import LikeButton from './button_components/LikeButton';
+import {  Redirect } from "react-router-dom";
 
 
  class SingleStory extends Component {
@@ -59,7 +60,7 @@ import LikeButton from './button_components/LikeButton'
 
                                     {
                                     story.isOwner ? (
-                                    <button className="btn btn-outline-dark">delete</button>
+                                    <button onClick={() => this.props.handleDelete(story)} className="btn btn-outline-dark">delete</button>
                                                 ) : null
                                     }
 

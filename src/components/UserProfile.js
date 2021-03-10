@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Map2 from "./Map2"
-import NavBottom from "./NavTop"
+// import NavBottom from "./NavTop"
 import { Link, Redirect } from "react-router-dom";
 import LikeButton from "./button_components/LikeButton";
 
