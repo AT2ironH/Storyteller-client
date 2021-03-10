@@ -53,7 +53,7 @@ class AllStories extends Component {
                           {/* like should be an image
                                                 like button goes back to 0 after refresh
                                                 how to take the like state to a single story page =================*/}
-                                            <LikeButton story={story}/>
+                                            {/* <LikeButton story={story}/> */}
                                         </div>
 
                         <div className="nav-container-card">

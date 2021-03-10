@@ -55,7 +55,7 @@ import {  Redirect } from "react-router-dom";
                                     {/* like should be an image
                                     like button goes back to 0 after refresh
                                     how to take the like state to a single story page =================*/}
-                                    <LikeButton story={story}/>
+                                    {/* <LikeButton story={story}/> */}
                                 </div>
 
                                     {

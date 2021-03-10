@@ -26,6 +26,7 @@ class App extends Component {
     // ready: false,
     // review: {}
     fetching: false,
+    ownerStories: []
   };
 
   //Signup
@@ -229,6 +230,7 @@ class App extends Component {
 
       .then((response) => {
         console.log(response.data);
+        // filter through response.data only for the stories created by the user. that needs to be inside the same set state below
         this.setState({ stories: response.data });
       })
 
