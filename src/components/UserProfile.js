@@ -6,7 +6,8 @@ import LikeButton from "./button_components/LikeButton";
 
 
  class UserProfile extends Component {
-    render() {
+   render() {
+      console.log(this.props.stories)
 
         const { stories, user } = this.props;
         if (!user) {
@@ -43,7 +44,7 @@ import LikeButton from "./button_components/LikeButton";
                     {/* like should be an image
                                                 like button goes back to 0 after refresh
                                                 how to take the like state to a single story page =================*/}
-                    <LikeButton />
+                    <LikeButton story={story}/>
                   </div>
 
                   <div className="nav-container-card">
