@@ -15,7 +15,7 @@ import AllStories from "./components/AllStories";
 import SingleStory from "./components/SingleStory";
 // import CreateReview from "./components/CreateReview";
 import EditUser from "./components/EditUser";
-
+import NotFound from "./components/NotFound";
 
 
 class App extends Component {
@@ -329,9 +329,16 @@ class App extends Component {
             path="/edit"
             render={(routeProps) => {
               //not sure about this route...
-              return <EditUser user={user} onEdit={this.handleEdit} {...routeProps} />;
+              return (
+                <EditUser
+                  user={user}
+                  onEdit={this.handleEdit}
+                  {...routeProps}
+                />
+              );
             }}
           />
+          <Route path="" component={NotFound} />
         </Switch>
         <NavBottom user={user} handleLogout={this.handleLogout} />
       </div>
