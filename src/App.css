@@ -249,7 +249,7 @@ div.nav-top {
 p.edit-btn {
     color: black;  
     font-weight: 500;  
-    margin-left: 270px;  
+    margin-left: 250px;  
 }
 
 .edit-btn {
@@ -625,6 +625,14 @@ div.stories-box {
     background-color: none;
     box-shadow: none;
   
+}
+
+.err-page {
+    margin: 100px 20px;
+    text-align-last: center;
+    font-size: 1.5em;
+
+
 }
 
 
