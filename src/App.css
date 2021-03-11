@@ -1,6 +1,5 @@
 
-  /* border: 1px solid rgba(0, 0, 0, 0.5) !important;
-    text  rgba(0, 0, 0, 0.5)  */
+  
 
    
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,700&display=swap');
@@ -19,11 +18,20 @@ p {
     font-family: 'Raleway', sans-serif;
     font-size: 14px;
     font-weight: lighter;
-    color: rgba(0, 0, 0, 0.9);
+    color: black;
 }
 
 
 /* change input fields (form) lines */
+/* create form page */
+input.create:focus{
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;  
+}
+
 .form-control {
      border-radius: 0px !important;
      background-color: rgba(0, 0, 0, 0) !important;
@@ -33,9 +41,10 @@ p {
      border-right:  rgba(0, 0, 0, 0) !important;
      border-bottom: 1px solid #1F2257 !important;      */
 }
+
 .form-text-window {
     border-radius: 0px !important;
-    border: 0.1px solid rgba(0, 0, 0, 0.5) !important;   
+    border: 0.1px solid white !important;   
 }
 
 /* change input image field (form) into line */
@@ -43,12 +52,7 @@ p {
     padding-bottom: 10px;
      border-radius: 0px !important;
      background-color: rgba(0, 0, 0, 0) !important;
-     border: 1px solid rgba(0, 0, 0, 0.5) !important;
-     /* border-top: rgba(0, 0, 0, 0) !important;
-     border-left:  rgba(0, 0, 0, 0) !important;
-     border-right:  rgba(0, 0, 0, 0) !important;
-     border-bottom: 1px solid #1F2257 !important;
-     background-color:  rgba(0, 0, 0, 0) !important;    */   
+     border: 1px solid white !important;      
 }
 
 .custom-file {
@@ -61,7 +65,7 @@ p {
     border-radius: 0px !important;
     box-shadow:  rgba(0, 0, 0, 0.5) !important;
     background-color:  rgba(0, 0, 0, 0.05) !important;  
-    color:black;        
+    color:white       
 }
 
 /* no blue shadow around input when input is activated */
@@ -72,6 +76,7 @@ p {
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
 }
+
 input.form-control:focus{
     outline:none !important;
     outline-width: 0 !important;
@@ -79,6 +84,7 @@ input.form-control:focus{
     -moz-box-shadow: none;
     -webkit-box-shadow: none;   
 }
+
 .custom-file-label:focus {
     outline:none !important;
     outline-width: 0 !important;
@@ -90,6 +96,10 @@ input.form-control:focus{
 .btn-outline-dark  {
     align-items: right;
     border-radius: 0px !important;    
+}
+
+#file-upload-button {
+    color: white;
 }
 
 /* buttons nav bar bottom */
@@ -134,6 +144,7 @@ a  {
     color:  #f3f2f3 !important; 
     text-decoration: none;
 }
+
 a:focus  {
     color: black !important; 
     background-color: #f3f2f3 !important; 
@@ -180,17 +191,83 @@ form > .btn-pin {
     width: 100%;
     top: 0;
     padding: 15px;
+    height: 55px;
     /* background-color: black; */
     background-color: #f3f2f3;
     border-bottom: 1px solid #1F2257;
     z-index: 100;
 }
 
+/* =================================================== */
+.nav-container-card .like-story {
+    text-align-last: right;
+}
+
+.edit-nav-btn {
+    position: relative;
+    top: 10px;
+    display: flex;
+    justify-content: right;
+    background-color: none;
+    /* margin: 30px;
+    width: 100vh;
+    padding: 5px 20px;
+    border: 1px solid #1F2257; */
+    z-index: 110;   
+}
+.div.btn-home-page-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    justify-content: space-between;
+}
+.btn-outline-dark {
+    margin-right: 20px;
+    border: 1px solid white;
+    padding: 5px 30px;
+}
+
+.btn-box-home { 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+div.nav-top {
+    /* background-color: cornflowerblue; */
+    display: flexbox;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.edit-nav-btn {
+    color: black;  
+    font-weight: 500;
+} 
+
+p.edit-btn {
+    color: black;  
+    font-weight: 500;  
+    margin-left: 270px;  
+}
+
+.edit-btn {
+    position: fixed; 
+    top: 20px;
+}
+
+div.nav-top {
+    display: flex;
+    justify-content: center;
+}
+
+
 /* position map moved to the top, cant get it back under navbar */
 /* map doesnt go under navbar */
 .map {
     position: absolute;
-    top: 55px;
+    /* top: 55px; */
     margin-top: 55px;
     z-index: -1;
 }
@@ -200,10 +277,6 @@ form > .btn-pin {
 .backdrop-auth {
     width: 300px;
     height: 550px;
-    /* background-color: rgba(0, 0, 0, 0.5); */
-    /* background-color: rgba(95, 95, 95, 0.2); */
-    /* background-color: white; */
-    /* opacity: 0.3; */
     background-color: rgba(255,255,255, 0.2);
     border-radius: 15px;
     font-display: flexbox;
@@ -218,7 +291,6 @@ form > .btn-pin {
 }
 
 .auth-form {
-    color: red;
     border-radius: 0px !important;
     background-color: rgba(0, 0, 0, 0) !important;
     border-bottom: 1.5px solid  white !important;  
@@ -236,7 +308,7 @@ form > .btn-pin {
     margin-left: -30px;
   } */
 
-  .auth-form::placeholder {
+  .create::placeholder {
     color: white;
     font-size: 16px;
     /* font-weight: 500; */
@@ -245,7 +317,32 @@ form > .btn-pin {
     margin-left: -30px;
   }
 
-  
+  .form-control::placeholder {
+    color: #f3f2f3;
+    font-size: 16px;
+    /* font-weight: 500; */
+    font-weight: normal;
+    font-family: 'Raleway', sans-serif;
+    margin-left: -30px;
+  }
+
+  .auth-form::placeholder {
+    color: #f3f2f3;
+    font-size: 16px;
+    /* font-weight: 500; */
+    font-weight: normal;
+    font-family: 'Raleway', sans-serif;
+    margin-left: -30px;
+  }
+
+  .form-control::placeholder {
+    color: #f3f2f3;
+    font-size: 16px;
+    /* font-weight: 500; */
+    font-weight: normal;
+    font-family: 'Raleway', sans-serif;
+    margin-left: -30px;
+  }
 
   .backdrop-auth > h1 {
     color: white;
@@ -310,7 +407,7 @@ form > .btn-pin {
     flex-direction: column;
     justify-content: center;
     position: relative;
-    top: 35px;
+    top: 49px;
     z-index: 0;
     padding-bottom: 70px;
     /* background-color: aqua; */
@@ -390,10 +487,6 @@ p.creator-story {
     margin: 0px 0px 40px;
     padding: 3px 20px;
     text-decoration: none;
-}
-
-.nav-container-card .like-story {
-    text-align-last: right;
 }
 
 /* single story container */
@@ -482,7 +575,6 @@ button.btn-create:hover {
     margin-bottom: 100px;
 }
 
-
 div.stories-box {
     position: relative;
     top: -36px;
@@ -499,6 +591,45 @@ div.stories-box {
     top: 35px;
     margin-bottom: 80px;
 }
+
+.create-story-box {
+    position: absolute;
+    top: 80px;
+    position: absolute;
+}
+
+.create {
+    border-radius: 0px !important;
+    background-color: none !important;
+    border: 1px solid white !important;     
+}
+
+.form-group-pin {
+    padding: 30px;   
+}
+
+.form-group-pin {
+    font-display: flexbox;
+    justify-content: flex-end;
+    padding: 5px;
+}
+
+.btn-pin {
+    background-color:#f3f2f3;
+    color: black;
+    border: none;
+}
+
+.btn-pin:hover {
+    border: 1px solid #f3f2f3;
+    background-color: none;
+    box-shadow: none;
+  
+}
+
+
+
+
 
 
 

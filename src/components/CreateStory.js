@@ -6,6 +6,15 @@ import axios from 'axios';
 import config from '../config';
 import { Link, Redirect } from "react-router-dom";
 
+let sectionStyle = {
+  width: "100%",
+  height: "90vh",
+  backgroundImage: "url('/image/black.png')",
+  backgroundPosition: 'center',
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat'
+};
+
 
 
  class CreateStory extends Component {
@@ -14,27 +23,9 @@ import { Link, Redirect } from "react-router-dom";
      inputLocation: "Taganga",
      lat: 11.267489,
      lon: -74.191023,
-    //  public & private ===================
-    //  visibility: true  
    };
 
-    // public & private =================
-  //  handlePrivacy = (event) => {
-  //    this.setState({
-  //     visibility: event.target.value,
-  //    });
-
-
-  //     .then((res) => {
-  //       if()
-        
-
-  //     })
-
-  //     .catch((err) => {
-
-  //     })
-  //  }
+  
 
    handleChange = (event) => {
        this.setState({
@@ -63,18 +54,19 @@ import { Link, Redirect } from "react-router-dom";
           return <Redirect to={"/login"} />;}
      return (
        // <Snuggle>
+       <div style={sectionStyle}>
             <div className="container">
                 <div className="row">
-                <div className="col-sm-3">
+                  <div className="col-sm-3 create-story-box">
 
         
-                    <Map className="map-single" lon={this.state.lon} lat={this.state.lat} inputLocation={this.state.inputLocation} /><br/>
+                    <Map className="map-create" lon={this.state.lon} lat={this.state.lat} inputLocation={this.state.inputLocation} /><br/>
                   
                     <form onSubmit={ (event) => {this.props.onAdd(event, this.state.lon , this.state.lat)} }>
                   
 
                         <div className="form-group">
-                          <input className="form-control" onChange={this.handleChange} name="location" value={this.state.inputLocation} type="text" placeholder="Tell where it is.." /> 
+                          <input className="form-control create" onChange={this.handleChange} name="location" value={this.state.inputLocation} type="text" placeholder="Tell where it is.." /> 
                         </div>
 
                         <div class="custom-file form-group">
@@ -83,39 +75,22 @@ import { Link, Redirect } from "react-router-dom";
                         </div>
 
                         <div className="form-group">
-                          <input className="form-control" name="title" type="text" placeholder="Tell the title of your story.." />
+                          <input className="form-control create" name="title" type="text" placeholder="Story title.." />
                         </div>
 
                         <div className="form-group">
-                          <textarea className="form-control form-text-window" id="tellStory" name="description" rows="6" placeholder="Tell your story...." ></textarea>
+                          <textarea className="form-control form-text-window" id="tellStory" name="description" rows="5" placeholder="Tell your story...." ></textarea>
                         </div>
-
-                        {/*  public & private  */}
-                        {/* <div className="form-group">
-                          <input name="btn-public" type="checkbox" className="btn-hide-show" onChange={this.handlePrivacy} value={this.state.visibility} data-type="simple-switch" />
-                          <label className="hide-show-label">private</label>
-                        </div> */}
-
-                        <div className="form-group">
-                          <input name="btn-public" type="checkbox" className="btn-hide-show" data-type="simple-switch" />
-                          <label className="switch">private</label>
-                        </div> 
-
-                        {/* <div className="form-group">
-                          <label className="switch">
-                            <input name="btn-public" type="checkbox" className="btn-hide-show" data-type="simple-switch" /> 
-                            <span className="slider round"></span>
-                          </label>               
-                        </div> */}
 
                         <div className="form-group-pin">
-                          <button name="btn-submit" type="submit" className="btn btn-outline-dark btn-pin">pin</button>
+                          <button name="btn-submit" type="submit" className="btn btn-outline-dark btn-pin">make story</button>
                         </div>
               
-              </form>
-              </div>
+                  </form>
+                </div>
               </div>
             </div>
+        </div>
 
        //  </Snuggle>
 

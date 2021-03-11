@@ -17,8 +17,8 @@ import LikeButton from "./button_components/LikeButton";
         return (
           <div>
           {/* top navbar */}
-            <div className="nav-container-card">
-              <button className="btn btn-outline-dark"><Link to="/edit">edit profile</Link></button>
+            <div className="nav-container">
+              <button className="btn btn-outline-dark btn-edit"><Link className="edit-nav-btn" to="/edit"><p className="edit-btn" > edit profile</p></Link></button>
             </div>
 
             {/* map & story container */}
