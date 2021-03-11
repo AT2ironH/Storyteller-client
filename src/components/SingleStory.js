@@ -66,7 +66,7 @@ import {  Redirect } from "react-router-dom";
 
                                 <div className="nav-story">
                                     {/* how to connect review with the story ==============================*/}
-                                    <Link to={`/placeReview`}>place review</Link> 
+                                    {/* <Link to={`/placeReview`}>place review</Link>  */}
                                 </div>
                             </div>
 

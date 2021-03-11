@@ -49,7 +49,7 @@ import LikeButton from "./button_components/LikeButton";
 
                   <div className="nav-container-card">
                     {/* how to connect review with the story ==============================*/}
-                    <Link to={`/placeReview`}>place review</Link>
+                    {/* <Link to={`/placeReview`}>place review</Link> */}
                   </div>
                 </div>
               );
