@@ -41,7 +41,7 @@ import {  Redirect } from "react-router-dom";
             return (
                 <div className="container"> 
                   <div className="row">
-                    <div className="col-sm-3">
+                    <div className="col-sm-3 single-story-card">
                         
                         <Snuggle>
                             <img src={story.image} alt="story image" style={{ width: "340px"}} />

@@ -23,12 +23,16 @@ import LikeButton from "./button_components/LikeButton";
 
             {/* map & story container */}
             <div className="stories-box">
-              <div className="container-story">
+              <div className="container-story container-user-stories">
                 <div className="row">
-                  <div className="col-sm-3"></div>
+                  <div className="col-sm-3 user-story-card">
               
                      <Map2 nameClass="map-all" stories={stories}/>
-                     <h1 className="stories-title">your stories</h1>
+                     {/* <h1 className="stories-title">your stories</h1> */}
+
+                     <div className="container-create">
+                          <button className=" btn-create" ><Link  className="create-link-btn" to="/create">make another story</Link></button>
+                      </div>
 
                         {stories.map((story) => {
                           return (
@@ -53,7 +57,7 @@ import LikeButton from "./button_components/LikeButton";
                                 {/* like should be an image
                                   like button goes back to 0 after refresh
                                   how to take the like state to a single story page ================= */}
-                                <LikeButton story={story}/>
+                                <LikeButton className="like-story" story={story}/>
                               </div>
                             </div>
                           );
@@ -61,15 +65,11 @@ import LikeButton from "./button_components/LikeButton";
                             /* </Snuggle> */
                           }
                         })}
-
-                       
-                          <button>
-                            <Link to="/create">Create your story</Link>
-                          </button>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
           
         );

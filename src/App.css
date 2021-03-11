@@ -108,6 +108,10 @@ input.form-control:focus{
     box-shadow: none;
 } 
 
+a.nav-btn:visited {
+    color: black;
+}
+
 .btn-pin {
     color: rgba(0, 0, 0, 0.5);
     border: 0.5px solid  rgba(0, 0, 0, 0.5);
@@ -131,16 +135,11 @@ a  {
     text-decoration: none;
 }
 a:focus  {
-    color: black;
+    color: black !important; 
     background-color: #f3f2f3 !important; 
     text-decoration: none;
-} 
+}  
 
-a:visited {
-    color:  black;
-    background-color: #f3f2f3 !important; 
-    text-decoration: none !important;
-} 
 
 form > .btn-pin {
     display: flex;
@@ -280,7 +279,6 @@ form > .btn-pin {
 }
 
   /* home page */
-
   .btn-home-page-box {
     font-display: flexbox;
     flex-direction: row;
@@ -394,7 +392,7 @@ p.creator-story {
     text-decoration: none;
 }
 
-nav-container-card .like-story {
+.nav-container-card .like-story {
     text-align-last: right;
 }
 
@@ -410,7 +408,98 @@ nav-container-card .like-story {
     position: absolute;
     top: 800px;
 }
-    
+
+.btn-round-edit {
+    height: 100px;
+    width: 100px;
+    color:none;
+    background-color: white;
+    border-radius: 50px;
+    border: none;
+    font-weight: lighter;
+    font-size: 2em;
+    text-align: center;
+    margin-top: 80px; 
+    box-shadow: 0 8px 10px -6px black;  
+}
+
+.btn-round-edit:hover {
+  color: white;
+  background-color: black;
+  /* border: 1px solid white; */
+}
+
+
+/* container for create link btn on user page */
+div.container-create {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* margin: -30px 0px -15px;    */
+}
+
+button.btn-create {
+    background-color: black;
+    margin: 30px;
+    width: 100vh;
+    padding: 10px 40px;
+    border: none;
+}
+
+button.btn-create:hover {
+    background-color: none;
+    background-color: black;
+    margin: 30px;
+    width: 100vh;
+    padding: 10px 40px;
+    border: none;
+}
+
+   
+.btn-round {
+    height: 100px;
+    width: 100px;
+    color:none;
+    background-color: white;
+    border-radius: 50px;
+    border: none;
+    font-weight: lighter;
+    font-size: 2em;
+    text-align: center;
+    margin-top: 80px; 
+    box-shadow: 0 8px 10px -6px black;  
+}
+
+.container-user-stories {
+    padding: 18px;
+    font-display: flexbox;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 0;
+    margin-bottom: 100px;
+}
+
+
+div.stories-box {
+    position: relative;
+    top: -36px;
+}
+
+.single-story-card {
+    position: relative;
+    top: 80px;
+    margin-bottom: 100px;
+}
+
+.all-stories {
+    position: relative;
+    top: 35px;
+    margin-bottom: 80px;
+}
+
 
 
 

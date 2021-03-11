@@ -22,7 +22,7 @@ import {Link} from "react-router-dom"
             {
               this.props.user ? (
               <button className="btn btn-outline-dark btn-nav-bottom">
-                <Link nameClass="link" to="/user">profile</Link>
+                <Link nameClass="nav-btn" to="/user">profile</Link>
               </button>
             ) : (null)
             }
