@@ -68,29 +68,27 @@ class EditUser extends Component {
          return <Redirect to={"/login"} />;
        }
     return (
-      
         <div style={sectionStyle}> 
-          <div className="backdrop-auth"><h1>edit account</h1></div>
 
-          <div className="container">
-              <div className="row">
-                <div className="col-sm-3"></div>
+          <div className="backdrop-auth">
+            <h1>edit account</h1>
+              <div className="edit-box">
         
-                  <div className="auth-form form-control">
+                <div className="form-group">
                     <input name="name" className="auth-form form-control" onChange={this.handleNameChange} value={user.name} type="text" placeholder="Enter name" />
                   </div> 
-                  <div className="auth-form form-control">
+                  <div className="form-group">
                     <input name="email" className="auth-form form-control" onChange={this.handleEmailChange} value={user.email} type="email" placeholder="Enter email" />
                     {/* <input name="password" onChange={this.handlePasswordChange} value={user.password} type="password" placeholder="Enter password" /> */}
                   </div> 
 
                   <div className="form-group">
-                    <button onClick={ () => { this.props.onEdit(user) } } className="btn btn-outline-dark" > Edit profile </button>
+                    <button onClick={ () => { this.props.onEdit(user) } } className="btn-round-edit" type="submit"> edit </button>
                   </div>
+              </div>
           </div>
         </div> 
-      </div>
-      
+       
     );
   }
 }

@@ -32,7 +32,7 @@ class SignUp extends Component {
                     <input name="password" className="auth-form form-control" type="password" placeholder="Enter password" />
                   </div>
                   <div className="form-group">
-                    <button className=" btn-round " type="submit">go</button>
+                    <button className="btn-round" type="submit">go</button>
                   </div>
               </form>
             </div>

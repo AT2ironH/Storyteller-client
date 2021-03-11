@@ -28,7 +28,7 @@ class AllStories extends Component {
           {/* <h1 className="stories-title">all amazing stories</h1> */}
             <div className="container-story">
               <div className="row">
-                <div className="col-sm-3">
+                <div className="col-sm-3 all-stories">
                   <Map2 nameClass="map-all" stories={stories} />
                   <h1 className="stories-title">all amazing stories</h1>
 
