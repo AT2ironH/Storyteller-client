@@ -167,7 +167,7 @@ form > .btn-pin {
     justify-content: space-between;
     position: fixed;
     width: 100%;
-    /* height: 80px; */
+    height: 82px;
     bottom: 0;
     padding: 25px;
     background-color: black;

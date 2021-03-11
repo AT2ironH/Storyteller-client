@@ -255,11 +255,15 @@ class App extends Component {
 
         // we need to grab the stories state and filter out the deleted element
         let deletedStoryId = response.data._id;
+        let filteredOwnerStories = this.state.ownerStories.filter(
+          (ownerStory) => ownerStory._id !== deletedStoryId
+        )
+
         let filteredStories = this.state.stories.filter(
           (eachStory) => eachStory._id !== deletedStoryId
         );
 
-        this.setState({ stories: filteredStories }, () => {
+        this.setState({ stories: filteredStories, ownerStories: filteredOwnerStories }, () => {
           this.props.history.push("/user");
         });
       })
