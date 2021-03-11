@@ -10,7 +10,8 @@ import config from '../../config'
 class LikeButton extends Component {
 
     state = {
-        number: 0
+        number: 0,
+        
     }
 
     componentDidMount() {

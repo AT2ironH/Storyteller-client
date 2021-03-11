@@ -68,16 +68,16 @@ import { Link, Redirect } from "react-router-dom";
                 <div className="col-sm-3">
 
         
-                    <Map lon={this.state.lon} lat={this.state.lat} inputLocation={this.state.inputLocation} /><br/>
+                    <Map className="map" lon={this.state.lon} lat={this.state.lat} inputLocation={this.state.inputLocation} /><br/>
                   
                     <form onSubmit={ (event) => {this.props.onAdd(event, this.state.lon , this.state.lat)} }>
                   
 
                         <div className="form-group">
-                          <input className="form-control line" onChange={this.handleChange} name="location" value={this.state.inputLocation} type="text" placeholder="Tell where it is.." /> 
+                          <input className="form-control" onChange={this.handleChange} name="location" value={this.state.inputLocation} type="text" placeholder="Tell where it is.." /> 
                         </div>
 
-                        <div class="custom-file">
+                        <div class="custom-file form-group">
                           <input name="image" type="file" className="custom-file-input" />
                           <label class="custom-file-label" for="customFile">choose image</label>
                         </div>
@@ -87,7 +87,7 @@ import { Link, Redirect } from "react-router-dom";
                         </div>
 
                         <div className="form-group">
-                          <textarea className="form-control" id="tellStory" name="description" rows="6" placeholder="Tell your story...." ></textarea>
+                          <textarea className="form-control form-text-window" id="tellStory" name="description" rows="6" placeholder="Tell your story...." ></textarea>
                         </div>
 
                         {/*  public & private  */}
@@ -98,11 +98,18 @@ import { Link, Redirect } from "react-router-dom";
 
                         <div className="form-group">
                           <input name="btn-public" type="checkbox" className="btn-hide-show" data-type="simple-switch" />
-                          <label className="hide-show-label">private</label>
-                        </div>
+                          <label className="switch">private</label>
+                        </div> 
 
-                        <div className="form-group">
-                          <button name="btn-submit" type="submit" className="btn btn-outline-dark">pin</button>
+                        {/* <div className="form-group">
+                          <label className="switch">
+                            <input name="btn-public" type="checkbox" className="btn-hide-show" data-type="simple-switch" /> 
+                            <span className="slider round"></span>
+                          </label>               
+                        </div> */}
+
+                        <div className="form-group-pin">
+                          <button name="btn-submit" type="submit" className="btn btn-outline-dark btn-pin">pin</button>
                         </div>
               
               </form>

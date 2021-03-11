@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
  class NavTop extends Component {
     render() {
         return (
-          <div className="nav-container-card">
+          <div className="nav-top">
             <Link to="/allstories">Logo</Link>
           </div>
         );

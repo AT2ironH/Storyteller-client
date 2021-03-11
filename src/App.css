@@ -1,60 +1,333 @@
-/* background color light: #f3f2f3 
 
+  /* border: 1px solid rgba(0, 0, 0, 0.5) !important;
+    text  rgba(0, 0, 0, 0.5)  */
 
-
-
-*/
-
-
+   
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,700&display=swap');
 
 body {
+    padding: 0;
+    margin: 0;
     background: #f3f2f3;
 }
 
+.body {
+    font-family: 'Raleway', sans-serif;
+}
 
+p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: lighter;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+
+/* change input fields (form) lines */
 .form-control {
      border-radius: 0px !important;
      background-color: rgba(0, 0, 0, 0) !important;
-     border-top: rgba(0, 0, 0, 0) !important;
+     border: 1px solid rgba(0, 0, 0, 0.5) !important;
+     /* border-top: rgba(0, 0, 0, 0) !important;
      border-left:  rgba(0, 0, 0, 0) !important;
      border-right:  rgba(0, 0, 0, 0) !important;
-     border-bottom: 1px solid #1F2257 !important;
+     border-bottom: 1px solid #1F2257 !important;      */
 }
-input.form-control:focus {
-    outline-width: 0;
-}
-
-
-.custom-file-label {
+.form-text-window {
     border-radius: 0px !important;
+    border: 0.1px solid rgba(0, 0, 0, 0.5) !important;   
+}
+
+/* change input image field (form) into line */
+.custom-file-label {
+    padding-bottom: 10px;
+     border-radius: 0px !important;
      background-color: rgba(0, 0, 0, 0) !important;
-     border-top: rgba(0, 0, 0, 0) !important;
+     border: 1px solid rgba(0, 0, 0, 0.5) !important;
+     /* border-top: rgba(0, 0, 0, 0) !important;
      border-left:  rgba(0, 0, 0, 0) !important;
      border-right:  rgba(0, 0, 0, 0) !important;
      border-bottom: 1px solid #1F2257 !important;
-     background-color:  rgba(0, 0, 0, 0) !important;
-    
+     background-color:  rgba(0, 0, 0, 0) !important;    */   
+}
+
+.custom-file {
+    margin-bottom: 15px; 
 }
 
 
+/* change button input image field (form)  */
 .custom-file-label::after {
     border-radius: 0px !important;
-     background-color: red !important;
-     box-shadow:  rgba(0, 0, 0, 0) !important;
-     background-color:  rgba(0, 0, 0, 0) !important;
-    
-
+    box-shadow:  rgba(0, 0, 0, 0.5) !important;
+    background-color:  rgba(0, 0, 0, 0.05) !important;  
+    color:black;        
 }
 
-input {
-    outline:none !important;
-   }
-
-   input:focus, input.form-control:focus {
-
+/* no blue shadow around input when input is activated */
+ #tellStory {
     outline:none !important;
     outline-width: 0 !important;
     box-shadow: none;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
 }
+input.form-control:focus{
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;   
+}
+.custom-file-label:focus {
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+} 
+
+.btn-outline-dark  {
+    align-items: right;
+    border-radius: 0px !important;    
+}
+
+/* buttons nav bar bottom */
+.btn-nav-bottom {
+    color:  #f3f2f3;
+    border: 1px solid  #f3f2f3;
+    padding: 3px 20px;
+}
+
+.btn-nav-bottom:hover {
+    color:  black;
+    border: none;
+    padding: 3px 20px;
+    background-color: #f3f2f3;
+    border: none;
+    box-shadow: none;
+} 
+
+.btn-pin {
+    color: rgba(0, 0, 0, 0.5);
+    border: 0.5px solid  rgba(0, 0, 0, 0.5);
+    padding: 3px 20px;
+}
+
+.btn-pin:hover {
+    padding: 3px 20px;
+
+}
+
+.btn-hide-show {
+    border-radius: 0px !important;
+    background-color: rgba(0, 0, 0, 0) !important;
+    border: 1px solid rgba(0, 0, 0, 0.5) !important;
+}
+
+/* link button profile */
+a  {
+    color:  #f3f2f3 !important; 
+    text-decoration: none;
+}
+a:focus  {
+    color: black;
+    background-color: #f3f2f3 !important; 
+    text-decoration: none;
+} 
+
+a:visited {
+    color:  black;
+    background-color: #f3f2f3 !important; 
+    text-decoration: none !important;
+} 
+
+form > .btn-pin {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+
+
+.form-group-pin {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.form-group { 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.nav-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    padding: 25px;
+    background-color: black;
+}
+
+.nav-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 15px;
+    /* background-color: black; */
+    background-color: #f3f2f3;
+    border-bottom: 1px solid #1F2257;
+    z-index: 2;
+}
+
+/* position map moved to the top, cant get it back under navbar */
+/* map doesnt go under navbar */
+.map {
+    position: absolute;
+    top: 55px;
+    margin-top: 55px;
+    z-index: -1;
+}
+
+
+/* signup & login page */
+.backdrop-auth {
+    width: 300px;
+    height: 550px;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    /* background-color: rgba(95, 95, 95, 0.2); */
+    /* background-color: white; */
+    /* opacity: 0.3; */
+    background-color: rgba(255,255,255, 0.2);
+    border-radius: 15px;
+    font-display: flexbox;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+    position: absolute;
+    top: 120px;
+    margin-left: 37.5px;
+    padding: 30px;
+    box-shadow: 0 8px 10px -6px black;
+}
+
+.auth-form {
+    border-radius: 0px !important;
+    background-color: rgba(0, 0, 0, 0) !important;
+    border-bottom: 1.5px solid  white !important;  
+    /* border-bottom: 1.5px solid  rgba(100, 27, 0, 0.5) !important;   */
+    border-top: rgba(0, 0, 0, 0) !important;
+    border-left:  rgba(0, 0, 0, 0) !important;
+    border-right:  rgba(0, 0, 0, 0) !important;  
+}
+
+/* .auth-form::placeholder {
+    color: rgba(100, 27, 0, 0.5);
+    font-size: 15px;
+    font-weight: normal;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    margin-left: -30px;
+  } */
+
+  .auth-form::placeholder {
+    color: white;
+    font-size: 16px;
+    /* font-weight: 500; */
+    font-weight: normal;
+    font-family: 'Raleway', sans-serif;
+    margin-left: -30px;
+  }
+
+  .backdrop-auth > h1 {
+    color: white;
+    font-size: 1.9em;
+    text-align-last: center;
+    margin-bottom: 45px;
+    margin-top: 20px;
+  }
+
+  .btn-round {
+      height: 100px;
+      width: 100px;
+      color:none;
+      background-color: white;
+      border-radius: 50px;
+      border: none;
+      font-weight: lighter;
+      font-size: 2em;
+      text-align: center;
+      margin-top: 80px; 
+      box-shadow: 0 8px 10px -6px black;  
+  }
+  .btn-round:hover {
+    color: white;
+    background-color: black;
+    /* border: 1px solid white; */
+  }
+
+  /* home page */
+
+  .btn-home-page-box {
+    font-display: flexbox;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 35px; 
+  }
+
+  h1.welcome {
+    color: black;
+    font-size: 2em;
+    text-align-last: left;
+  }
+
+  p.welcome-intro {
+      color: black;
+      font-weight: lighter;
+  }
+
+ /* a.btn-home {
+      color: black;
+      border: 1px solid black;
+} */
+
+/*  all stories */
+.container-story {
+    padding: 18px;
+    font-display: flexbox;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;  
+}
+.map-all {
+    position: absolute;
+    width: 100%;
+    top: 55px;
+
+}
+
+.stories-title {
+    background-color: black;
+    width: 100%;
+    text-align-last: center;
+    position: absolute;
+    width: 100%;
+    top: 280px;
+    padding: 15px;
+    
+}
+
+
+    
+
+
+
+
+

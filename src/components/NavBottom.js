@@ -4,17 +4,17 @@ import {Link} from "react-router-dom"
  class NavBottom extends Component {
     render() {
         return (
-          <div>
+          <div className="nav-bottom">
             {
               this.props.user ? (
-              <button className="btn btn-outline-dark" onClick= {this.props.handleLogout} >logout</button>
+              <button className="btn btn-outline-dark btn-nav-bottom" onClick= {this.props.handleLogout} >logout</button>
             ) : (null)
             }
             
             {
               this.props.user ? (
-              <button className="btn btn-outline-dark">
-              <Link to="/user">profile</Link>
+              <button className="btn btn-outline-dark btn-nav-bottom">
+              <Link nameClass="link" to="/user">profile</Link>
             </button>
             ) : (null)
             }

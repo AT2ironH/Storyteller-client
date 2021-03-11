@@ -25,15 +25,16 @@ class AllStories extends Component {
             
         return (
           <div>
-            <div className="container">
+          <h1 className="stories-title">all amazing stories</h1>
+            <div className="container-story">
               <div className="row">
                 <div className="col-sm-3">
-                  <Map2 stories={stories} />
+                  <Map2 nameClass="map-all"stories={stories} />
 
-                  <h1>all stories here</h1>
+                  
                   {stories.map((story) => {
                     return (
-                      <div>
+                      <div className="story-card">
                         {/* <Snuggle> */}
                         {/* link doesn't seem to work when wrapping image only ====================== */}
                         <Link to={`/allstories/${story._id}`}>
