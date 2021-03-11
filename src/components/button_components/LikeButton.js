@@ -42,13 +42,15 @@ class LikeButton extends Component {
     render() {
         console.log(this.props.story)
         return (
-          <button
-            className="btn btn-outline-dark"
-            className="like-img-btn"
-            onClick={this.handleClick}
-          >
-            like {this.state.number}
-          </button>
+          <div className="container-like">
+            <button className="like-box"
+              className="btn btn-outline-dark"
+              className="like-img-btn"
+              onClick={this.handleClick}
+            >
+              like {this.state.number}
+            </button>
+          </div>
         );
     }
 }

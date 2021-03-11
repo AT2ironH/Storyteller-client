@@ -24,12 +24,13 @@ class AllStories extends Component {
             }
             
         return (
-          <div>
-          <h1 className="stories-title">all amazing stories</h1>
+          <div className="stories-box">
+          {/* <h1 className="stories-title">all amazing stories</h1> */}
             <div className="container-story">
               <div className="row">
                 <div className="col-sm-3">
                   <Map2 nameClass="map-all"stories={stories} />
+                  <h1 className="stories-title">all amazing stories</h1>
 
                   
                   {stories.map((story) => {
@@ -44,23 +45,20 @@ class AllStories extends Component {
                             alt="story image"
                             style={{ width: "340px" }}
                           />
-                          <h4 className="title">{story.title}</h4>
-                          <p className="description">{story.description}</p>
+                          <h4 className="title-story">{story.title}</h4>
+                          <p className="description-story">{story.description}</p>
                           {/* how to link with the user name =======================================*/}
-                          <p className="creator">{story.creator.email}</p>
+                          <p className="creator-story">{story.creator.email}</p>
                         </Link>
 
                         <div className="nav-container-card">
                           {/* like should be an image
-                                                like button goes back to 0 after refresh
-                                                how to take the like state to a single story page =================*/}
-                                            <LikeButton story={story}/>
-                                        </div>
-
-                        <div className="nav-container-card">
-                          {/* how to connect review with the story ==============================*/}
-                          <Link to={`/placeReview`}>place review</Link>
+                          like button goes back to 0 after refresh
+                          how to take the like state to a single story page =================*/}
+                            <LikeButton className="like-story" story={story}/>
                         </div>
+
+              
                       </div>
                     );
                     {

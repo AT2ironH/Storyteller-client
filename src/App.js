@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "./App.css"
 import CreateStory from './components/CreateStory';
 import { Switch, Route, withRouter } from "react-router-dom";
 import Homepage from "./components/Homepage";

@@ -183,7 +183,7 @@ form > .btn-pin {
     /* background-color: black; */
     background-color: #f3f2f3;
     border-bottom: 1px solid #1F2257;
-    z-index: 2;
+    z-index: 100;
 }
 
 /* position map moved to the top, cant get it back under navbar */
@@ -218,6 +218,7 @@ form > .btn-pin {
 }
 
 .auth-form {
+    color: red;
     border-radius: 0px !important;
     background-color: rgba(0, 0, 0, 0) !important;
     border-bottom: 1.5px solid  white !important;  
@@ -243,6 +244,8 @@ form > .btn-pin {
     font-family: 'Raleway', sans-serif;
     margin-left: -30px;
   }
+
+  
 
   .backdrop-auth > h1 {
     color: white;
@@ -270,6 +273,10 @@ form > .btn-pin {
     background-color: black;
     /* border: 1px solid white; */
   }
+
+  input, textarea {
+    color: white !important;
+}
 
   /* home page */
 
@@ -303,26 +310,79 @@ form > .btn-pin {
     font-display: flexbox;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    padding: 30px;  
+    position: relative;
+    top: 35px;
+    z-index: 0;
+    /* background-color: aqua; */
 }
+
+.container-story > h1 {
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    margin: 0px;
+}
+
 .map-all {
     position: absolute;
     width: 100%;
     top: 55px;
+    position: absolute;
+    top: 800px;
+    
 
 }
 
 .stories-title {
+    color: white;
     background-color: black;
     width: 100%;
     text-align-last: center;
-    position: absolute;
-    width: 100%;
-    top: 280px;
-    padding: 15px;
     
+    width: 100%;
+    top: 290px;
+    padding: 15px;   
 }
+
+h4.title-story {
+    color:  rgba(0, 0, 0, 0.9);
+    padding: 10px 0px;
+    margin: 0px;
+    text-align-last: left;
+}
+
+p.description-story {
+    font-size: 0.9em;
+
+}
+
+p.creator-story {
+    color:  rgba(0, 0, 0, 0.3);
+    font-size: 0.9em;
+    font-weight: 500;
+    text-align-last: right;
+}
+
+.container-like {
+    display: flexbox;
+    flex-direction: row;
+    text-align-last: right;
+    width: 100%;  
+}
+
+.like-img-btn {
+    /* background-color: blueviolet; */
+    color:  rgba(0, 0, 0, 0.3);
+    margin: 10px;
+    padding: 0px 20px
+}
+nav-container-card .like-story {
+    text-align-last: right;
+}
+/* LikeButton.like-story {
+    text-align-last: right;
+
+} */
 
 
     
