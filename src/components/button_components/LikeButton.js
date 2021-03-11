@@ -14,14 +14,14 @@ class LikeButton extends Component {
     }
 
     componentDidMount() {
-      this.setState({number: this.props.story.like.length})
+      this.setState({number: this.props.story?.like?.length})
     }
 
     // handle click event when button is clicked
     handleClick = () => {
       axios.patch(`${config.API_URL}/api/allstories/like/${this.props.story._id}`, {}, { withCredentials: true })
         .then((response) => {
-          this.setState({number: response.data.like.length})
+          this.setState({number: response.data?.like?.length})
 
         })
 

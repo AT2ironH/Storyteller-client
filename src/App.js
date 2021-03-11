@@ -26,7 +26,57 @@ class App extends Component {
     // ready: false,
     // review: {}
     fetching: false,
-    ownerStories: []
+    ownerStories: [],
+  };
+
+  // get all stories  // also for load screen
+  componentDidMount() {
+    axios
+      .get(`${config.API_URL}/api/user`, { withCredentials: true })
+      .then((res) => {
+        this.setState({ user: res.data, fetching: true });
+      })
+      .catch(() => {
+        console.log("sth wrong");
+        this.setState({ fetching: true });
+      });
+
+    this.getAllStories();
+    this.getMyStories()
+  }
+
+  getAllStories = () => {
+    axios
+      .get(`${config.API_URL}/api/allstories`, { withCredentials: true })
+
+      .then((response) => {
+        console.log("All Stories:", response.data);
+        // filter through response.data only for the stories created by the user. that needs to be inside the same set state below
+        // let newRes = response.data.creator._id.map((single) => {
+        //   if (creator._id === single._id){
+        //     single = newRes
+        //   }
+        //})
+        this.setState({ stories: response.data });
+      })
+
+      .catch(() => {
+        console.log("Fetching all stories failed");
+      });
+  };
+
+  getMyStories = () => {
+    axios
+      .get(`${config.API_URL}/api/myStories`, { withCredentials: true })
+
+      .then((response) => {
+        console.log("myStories:", response.data);
+        this.setState({ ownerStories: response.data });
+      })
+
+      .catch(() => {
+        console.log("Fetching all stories failed");
+      });
   };
 
   //Signup
@@ -162,8 +212,7 @@ class App extends Component {
       });
   };
 
-
-//EDIT USER
+  //EDIT USER
   handleEdit = (user) => {
     axios
       .patch(`${config.API_URL}/api/user/${user._id}`, {
@@ -172,8 +221,8 @@ class App extends Component {
         password: user.password,
       })
       .then((res) => {
-        console.log(res.data)
-        this.getAllStories()
+        console.log(res.data);
+        this.getAllStories();
         this.setState(
           {
             user: res.data,
@@ -190,54 +239,28 @@ class App extends Component {
 
   //DELETE
   handleDelete = (story) => {
-    axios.delete(`${config.API_URL}/api/stories/${story._id}`) 
-      .then((response) => {
-        //we need to acces the state and remove the element from the state and then update the state. and then 195 line of code will be done.
-        this.setState(
-          {
-            //return state.filter(territory => territory.id !== territoryId);
-            // postList: this.state.postList.filter(item => item.post_id != deletePostId)
-            stories: response.data
-          },
-          () => {
-            this.props.history.push("/user");
-          }
-        );
-      })
-      .catch(() => {
-
-      })
-  }
-
-  // get all stories  // also for load screen
-  componentDidMount() {
     axios
-      .get(`${config.API_URL}/api/user`, { withCredentials: true })
-      .then((res) => {
-        this.setState({ user: res.data, fetching: true });
-      })
-      .catch(() => {
-        console.log("sth wrong");
-        this.setState({ fetching: true });
-      });
-
-    this.getAllStories()
-  }
-
-  getAllStories = () => {
-    axios
-      .get(`${config.API_URL}/api/allstories`)
-
+      .delete(`${config.API_URL}/api/stories/${story._id}`)
       .then((response) => {
         console.log(response.data);
-        // filter through response.data only for the stories created by the user. that needs to be inside the same set state below
-        this.setState({ stories: response.data });
-      })
+        //we need to acces the state and remove the element from the state and then update the state. and then 195 line of code will be done.
 
-      .catch(() => {
-        console.log("Fetching all stories failed");
-      });
-  }
+        //return state.filter(territory => territory.id !== territoryId);
+        // postList: this.state.postList.filter(item => item.post_id != deletePostId)  //none of these examples worked for me
+
+        // we need to grab the stories state and filter out the deleted element
+        let deletedStoryId = response.data._id;
+        let filteredStories = this.state.stories.filter(
+          (eachStory) => eachStory._id !== deletedStoryId
+        );
+
+        this.setState({ stories: filteredStories }, () => {
+          this.props.history.push("/user");
+        });
+      })
+      .catch(() => {});
+  };
+
   // create review
   //   handleSubmitReview = (event) => {
   //     event.preventDefault()
@@ -271,8 +294,8 @@ class App extends Component {
   // }
 
   render() {
-    const { stories, user } = this.state;
-    const { review } = this.state;
+    const { stories, ownerStories, user } = this.state;
+    // const { review } = this.state;
     if (!this.state.fetching) {
       return <p>Loading...</p>;
     }
@@ -281,7 +304,6 @@ class App extends Component {
         <NavTop />
 
         <Switch>
-          
           <Route
             exact
             path="/"
@@ -293,14 +315,14 @@ class App extends Component {
             exact
             path="/signup"
             render={() => {
-              return <Signup onAdd={this.handleSignup} />; //can we have onAdd in both signup and login cases.
+              return <Signup onAdd={this.handleSignup} />;
             }}
           />
           <Route
             exact
             path="/login"
             render={() => {
-              return <Login onAdd={this.handleLogin} />; //would onAdd work???
+              return <Login onAdd={this.handleLogin} />;
             }}
           />
           <Route
@@ -313,14 +335,14 @@ class App extends Component {
             exact
             path="/user"
             render={() => {
-              return <UserProfile stories={stories} user={user} />;
+              return <UserProfile stories={ownerStories} user={user} />;
             }}
           />
           <Route
             exact
             path="/user/:singleStory"
             render={(userProps) => {
-              return <UserProfile  story={story} user={user} />;
+              return <UserProfile story={story} user={user} />;
             }}
           />
           <Route
@@ -328,7 +350,12 @@ class App extends Component {
             path="/allstories/:storyId"
             render={(routeProps) => {
               return (
-                <SingleStory handleDelete={this.handleDelete} {...routeProps} stories={stories} user={user} />
+                <SingleStory
+                  handleDelete={this.handleDelete}
+                  {...routeProps}
+                  stories={stories}
+                  user={user}
+                />
               );
             }}
           />
@@ -346,7 +373,9 @@ class App extends Component {
             render={(routeProps) => {
               //not sure about this route...
               return (
-                <EditUser user={user} onEdit={this.handleEdit}
+                <EditUser
+                  user={user}
+                  onEdit={this.handleEdit}
                   {...routeProps}
                 />
               );

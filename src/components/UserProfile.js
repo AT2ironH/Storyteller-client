@@ -44,12 +44,12 @@ import LikeButton from "./button_components/LikeButton";
                     {/* like should be an image
                                                 like button goes back to 0 after refresh
                                                 how to take the like state to a single story page =================*/}
-                    {/* <LikeButton story={story}/> */}
+                    <LikeButton story={story}/>
                   </div>
 
                   <div className="nav-container-card">
                     {/* how to connect review with the story ==============================*/}
-                    <Link to={`/placeReview`}>place review</Link>
+                    {/* <Link to={`/placeReview`}>place review</Link> */}
                   </div>
                 </div>
               );
