@@ -133,6 +133,8 @@ class App extends Component {
             user: response.data,
           },
           () => {
+            this.getAllStories()
+            this.getMyStories()
             this.props.history.push("/allstories");
           }
         );
@@ -204,6 +206,8 @@ class App extends Component {
         this.setState(
           {
             user: null,
+            stories: [],
+            ownerStories: []
           },
           () => {
             this.props.history.push("/login");
