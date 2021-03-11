@@ -20,11 +20,11 @@ import LikeButton from "./button_components/LikeButton";
                 <Link to="/edit">edit profile</Link>
               </button>
             </div>
-            <Map2 stories={stories}/>
+            <Map2 nameClass="map-all" stories={stories}/>
 
             {stories.map((story) => {
               return (
-                <div>
+                <div className="story-card">
                   {/* <Snuggle> */}
                   {/* link doesn't seem to work when wrapping image only ====================== */}
                   <Link to={`/allstories/${story._id}`}>
@@ -34,23 +34,18 @@ import LikeButton from "./button_components/LikeButton";
                       alt="story image"
                       style={{ width: "340px" }}
                     />
-                    <h4 className="title">{story.title}</h4>
-                    <p className="description">{story.description}</p>
+                    <h4 className="title-story">{story.title}</h4>
+                    <p className="description-story">{story.description}</p>
                     {/* how to link with the user name =======================================*/}
-                    <p className="creator">{story.creator.email}</p>
+                    {/* <p className="creator">{story.creator.email}</p> */}
                   </Link>
 
-                  <div className="nav-container-card">
-                    {/* like should be an image
-                                                like button goes back to 0 after refresh
-                                                how to take the like state to a single story page =================*/}
+                  {/* <div className="nav-container-card">
+                    like should be an image
+                      like button goes back to 0 after refresh
+                      how to take the like state to a single story page =================
                     <LikeButton story={story}/>
-                  </div>
-
-                  <div className="nav-container-card">
-                    {/* how to connect review with the story ==============================*/}
-                    {/* <Link to={`/placeReview`}>place review</Link> */}
-                  </div>
+                  </div> */}
                 </div>
               );
               {

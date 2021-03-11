@@ -68,7 +68,7 @@ import { Link, Redirect } from "react-router-dom";
                 <div className="col-sm-3">
 
         
-                    <Map className="map" lon={this.state.lon} lat={this.state.lat} inputLocation={this.state.inputLocation} /><br/>
+                    <Map className="map-single" lon={this.state.lon} lat={this.state.lat} inputLocation={this.state.inputLocation} /><br/>
                   
                     <form onSubmit={ (event) => {this.props.onAdd(event, this.state.lon , this.state.lat)} }>
                   

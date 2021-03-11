@@ -48,7 +48,7 @@ class LikeButton extends Component {
               className="like-img-btn"
               onClick={this.handleClick}
             >
-              like {this.state.number}
+              like   {this.state.number}
             </button>
           </div>
         );

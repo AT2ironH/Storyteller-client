@@ -3,6 +3,15 @@ import config from "../config";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 
+let sectionStyle = {
+  width: "100%",
+  height: "90vh",
+  backgroundImage: "url('/image/mountain_lake.jpg')",
+  backgroundPosition: 'center',
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat'
+};
+
 class EditUser extends Component {
   state = {
     user: {},
@@ -59,16 +68,29 @@ class EditUser extends Component {
          return <Redirect to={"/login"} />;
        }
     return (
-      <div>
+      
+        <div style={sectionStyle}> 
+          <div className="backdrop-auth"><h1>edit account</h1></div>
+
+          <div className="container">
+              <div className="row">
+                <div className="col-sm-3"></div>
         
-          <input name="name" onChange={this.handleNameChange} value={user.name} type="text" placeholder="Enter name" />
-          <input name="email" onChange={this.handleEmailChange} value={user.email} type="email" placeholder="Enter email" />
-          {/* <input name="password" onChange={this.handlePasswordChange} value={user.password} type="password" placeholder="Enter password" /> */}
-          <button onClick={ () => { this.props.onEdit(user) } } className="btn btn-outline-dark" >
-            Edit profile
-          </button>
-        
+                  <div className="auth-form form-control">
+                    <input name="name" className="auth-form form-control" onChange={this.handleNameChange} value={user.name} type="text" placeholder="Enter name" />
+                  </div> 
+                  <div className="auth-form form-control">
+                    <input name="email" className="auth-form form-control" onChange={this.handleEmailChange} value={user.email} type="email" placeholder="Enter email" />
+                    {/* <input name="password" onChange={this.handlePasswordChange} value={user.password} type="password" placeholder="Enter password" /> */}
+                  </div> 
+
+                  <div className="form-group">
+                    <button onClick={ () => { this.props.onEdit(user) } } className="btn btn-outline-dark" > Edit profile </button>
+                  </div>
+          </div>
+        </div> 
       </div>
+      
     );
   }
 }

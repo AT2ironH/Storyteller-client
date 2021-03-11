@@ -45,10 +45,10 @@ import {  Redirect } from "react-router-dom";
                         
                         <Snuggle>
                             <img src={story.image} alt="story image" style={{ width: "340px"}} />
-                            <h1 className="title">{story.title}</h1>
-                            <p className="description">{story.description}</p>
+                            <h1 className="title-story">{story.title}</h1>
+                            <p className="description-story">{story.description}</p>
                             {/* how to link with the user name =======================================*/}
-                            <p className="creator">{story.creator?.email}</p>
+                            <p className="creator-story">{story.creator?.email}</p>
 
                             <div className="nav-container-story">
                                 <div className="nav-story">
@@ -58,11 +58,13 @@ import {  Redirect } from "react-router-dom";
                                     <LikeButton story={story}/>
                                 </div>
 
+                                <div className="container-like">
                                     {
                                     story.isOwner ? (
-                                    <button onClick={() => this.props.handleDelete(story)} className="btn btn-outline-dark">delete</button>
+                                    <button onClick={() => this.props.handleDelete(story)} className="delete-img-btn btn btn-outline-dark">delete</button>
                                                 ) : null
                                     }
+                                </div>
 
                                 <div className="nav-story">
                                     {/* how to connect review with the story ==============================*/}

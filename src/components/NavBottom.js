@@ -10,14 +10,24 @@ import {Link} from "react-router-dom"
               <button className="btn btn-outline-dark btn-nav-bottom" onClick= {this.props.handleLogout} >logout</button>
             ) : (null)
             }
-            
+
+            {/* {
+              this.props.user ? (
+              <button className="btn btn-outline-dark btn-nav-bottom">
+                <Link to="/create">create</Link>
+              </button>
+              ) : (null)
+            } */}
+
             {
               this.props.user ? (
               <button className="btn btn-outline-dark btn-nav-bottom">
-              <Link nameClass="link" to="/user">profile</Link>
-            </button>
+                <Link nameClass="link" to="/user">profile</Link>
+              </button>
             ) : (null)
             }
+
+           
           </div>
         );
     }

@@ -29,7 +29,7 @@ class AllStories extends Component {
             <div className="container-story">
               <div className="row">
                 <div className="col-sm-3">
-                  <Map2 nameClass="map-all"stories={stories} />
+                  <Map2 nameClass="map-all" stories={stories} />
                   <h1 className="stories-title">all amazing stories</h1>
 
                   
