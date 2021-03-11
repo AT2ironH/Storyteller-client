@@ -19,25 +19,27 @@ let sectionStyle = {
               <h1 className="welcome">welcome<br></br>backpackers</h1>
   
                 <p className="welcome-intro">
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                  enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                  nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                  reprehenderit in voluptate
+                Let this app be your hub for sharing backpacking adventures and cool places you visited.
+                Tell us your story!
                 </p>
 
-                <div className="btn-home-page-box">
-                  <button className="btn-home btn btn-outline-dark">
-                    <Link className="btn-home" to="/login">Login</Link>
-                  </button>
+                <div className="btn-box-home">
+                  <div className="btn-home-page-box">
+                    <button className="btn-home btn btn-outline-dark">
+                      <Link className="btn-home" to="/login">Login</Link>
+                    </button>
+                </div>
+                </div>
                 
+                <div className="btn-box-home">
                   <button className="btn-home btn btn-outline-dark">
                     <Link className="btn-home" to="/signup">Sign up</Link>
                   </button>
+                  </div>
                 </div>
                 
             </div>
-         </div>
+         
         );
     }
 }
