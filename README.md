@@ -19,7 +19,7 @@ MVP
 - Edit profile implemented. User can edit their profile.
 - Delete story implemented. User can delete only the story they made.
 - Logout button implemented. It takes the user back to login page.
-- 
+
 
 
 Backlog
