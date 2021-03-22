@@ -1,22 +1,25 @@
 ----------------------------------------------- Storykeeper ------------------------------------------------------
 
 Description:
-Page for all Pet owners and Those who would like to travel and while at it to take care of a lovely furry friend. 
-onnecting One of the favorite ways of traveling Couch surfing and one of everyones favorite pastimes,having fun with and taking care of our pets.
-In our Pet & Bed app you can connect with other ppl like you and travel to another city where you will get  accommodation in exchange for taking care of your hosts pet.
+It is an mobile app where you share your backpacking stories with others on the hub. 
+You can post them on the comunity wall and if you like them give them a like.
+
 
 
 
 MVP
-- Login and Signup as a Guest and as an Owner.
-- Choose preference between cities and pets.
-- Logo works as a "back to home" button.
-- On "find pet lover" page user can see all guest accounts, filter them by city and pet preference.
-- On "find pet owner" page user can see all owner accounts, filter them by city and pet preference.
-- Search function implemented.
-- Edit and delete account implemented.
-- Details page implemented when user clicks on a profile card.
-
+- Signup and login implemented.
+- Protected routes implemented.
+- Clicking on a logo takes the user back to comunity wall.
+- React leaflet map implemented that shows the location of every story on a comunty wall and their coresponding map pins. 
+- Cloudinary implemented for picture upload.
+- User has their own wall where they can create a new story by clicking on a "make another story" button,
+  their stories are shown with pictures and text added. Also they have their own map that shows only their locations on the map with coresponding pins.
+- Like button implemented next to the stories. User can like a story only once. 
+- Edit profile implemented. User can edit their profile.
+- Delete story implemented. User can delete only the story they made.
+- Logout button implemented. It takes the user back to login page.
+- 
 
 
 Backlog
@@ -24,4 +27,4 @@ Backlog
 -Make the page responsive. 
 
 
-Git URls for the project repo: https://pet-bed.herokuapp.com/
+Git URls for the project repo: https://story--keeper.herokuapp.com/
